@@ -1,0 +1,22 @@
+<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+
+<h5>Example Code Highlighting</h5>
+{% highlight php linenos %}
+<?php 
+try {
+    $search = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
+    $query = new \Affilinet\ProductData\Requests\Helper\Query();
+
+    $query->where($query->exactly('T-Shirt'));
+
+    $search
+        ->query( $query)
+        ->onlyWithImage()
+        ->minPrice(1)
+        ->maxPrice(100)
+        ->page(1)
+        ->pageSize(20);
+
+    $response = $search->send();
+}
+{% endhighlight %}
