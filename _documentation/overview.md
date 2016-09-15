@@ -5,17 +5,19 @@ title: Overview of all methods
 slug: overview
 # chapter sections, also used for building the sidebar navigation
 sections: 
-  - slug: overview-method1
-    title: Method 1
-  - slug: overview-method2
-    title: Method 2  
+  - slug: overview-products
+    title: Products
     sections: 
-    - slug: overview-method2-content1
-      title: Content 1
-    - slug: overview-method2-content2
-      title: Content 2
-  - slug: overview-method3
-    title: Method 3
+    - slug: overview-products-request
+      title: Products request
+    - slug: overview-products-response
+      title: Products response
+  - slug: overview-categories
+    title: Categories
+  - slug: overview-shops
+    title: Shops
+  - slug: overview-shop-properties
+    title: Shop properties
 # position, used for sorting the chapters
 position: 3
 

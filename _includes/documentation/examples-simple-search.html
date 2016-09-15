@@ -1,0 +1,41 @@
+<p>
+{% highlight php linenos %}
+<?php 
+$config = [
+    'publisher_id' => {PUBLISHER ID},
+    'product_webservice_password' => {PRODUCT WEBSERVICE PASSWORD}
+];
+
+$affilinet = new \Affilinet\ProductData\AffilinetClient($config);
+
+// simple search for t-shirts (using the product webservice)
+try {
+    $search = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
+    $query = new \Affilinet\ProductData\Requests\Helper\Query();
+
+    $query->where($query->exactly('T-Shirt'));
+
+    $search
+        ->query( $query)
+        ->onlyWithImage()
+        ->minPrice(1)
+        ->maxPrice(100)
+        ->page(1)
+        ->pageSize(20);
+
+    $response = $search->send();
+}
+
+catch (\Affilinet\ProductData\Exceptions\AffilinetProductWebserviceException $e) {
+    // There is an error within your $search
+    echo 'Error: ' . $e->getMessage();
+}
+
+echo 'Total results : ' . $response->totalRecords() ;
+
+foreach ($response->getProducts() as $product) {
+    echo $product->getProductName();
+    echo $product->getPriceInformation()->getDisplayPrice();
+}
+{% endhighlight %}
+</p>
