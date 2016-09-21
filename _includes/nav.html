@@ -43,7 +43,7 @@
               {% if menu_item.slug contains "http" or menu_item.slug contains "https" %}
                 <a href="{{ site.url }}/{{ menu_item.slug }}">{{ menu_item.title }}</a>
               {% else %}
-                <a href="{{ site.url }}//{{ menu_item.slug }}">{{ menu_item.title }}</a>
+                <a href="{{ site.url }}/{{ menu_item.slug }}">{{ menu_item.title }}</a>
               {% endif %}
   
               </li>  
