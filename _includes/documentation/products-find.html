@@ -3,6 +3,9 @@
 </p>
 {% highlight php linenos %}
 <?php
+
+$search = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
+
 // will directly return a Product Object
 $product = $search->findOne('123456789');
 echo $product->getProductName();
@@ -14,6 +17,9 @@ echo $product->getPriceInformation()->getDisplayPrice();
 
 {% highlight php linenos %}
 <?php
+
+$search = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
+
 // will return a Product Response Object
 $productResponse = $search->find(['123', 65, 15651]);
 

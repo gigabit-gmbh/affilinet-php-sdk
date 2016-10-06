@@ -3,21 +3,21 @@
 $search = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
 $search
     ->onlyWithImage() // only include results with images
-->addProductImage() // include the original image of the product
-->excludeShopIds([123]) // do not include products from Shop with id 123
-->addShopLogoWithSize90px() // also include a shop logo with a specific width of 90px
-->maxPrice(100.01) // maximum price 100 euro and one cent
-->minPrice(1)   // minimum price: one euro
-->page(2) // show the second result page page (page parameter starts counting at 1)
-->pageSize(20) // 20 results per page
-;
+    ->addProductImage() // include the original image of the product
+    ->excludeShopIds([123]) // do not include products from Shop with id 123
+    ->addShopLogoWithSize90px() // also include a shop logo with a specific width of 90px
+    ->maxPrice(100.01) // maximum price 100 euro and one cent
+    ->minPrice(1)   // minimum price: one euro
+    ->page(2) // show the second result page page (page parameter starts counting at 1)
+    ->pageSize(20) // 20 results per page
+    ;
 
 // will return a Product Response Object
 $productResponse = $search->send();
 
 foreach ($productResponse->products() as $product) {
-echo $product->getProductName();
-echo $product->getPriceInfor;
+    echo $product->getProductName();
+    echo $product->getPriceInfor;
 }
 
 {% endhighlight %}
