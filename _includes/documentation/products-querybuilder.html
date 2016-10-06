@@ -1,0 +1,100 @@
+<p>
+    The SDK provides a Query Builder to easily generate complex SQL-like search requests .
+</p>
+
+<div class="well well-sm">
+    The Query Builder should not be combined with the <a href="#products-facets">facet querystring generator</a>.
+
+</div>
+
+
+<p>
+    Get all products containing "apple" but not containing "ipod", "iphone", "mac"
+</p>
+
+{% highlight php linenos %}
+<?php
+$search = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
+$query = new \Affilinet\ProductData\Requests\Helper\Query();
+
+$query
+    ->where($query->contains('apple'))
+    ->andWhere($query->containsNot('ipod', 'iphone', 'mac', 'iPad' ));
+$search->query( $query);
+$response = $search->send();
+
+{% endhighlight %}
+
+
+<p>
+    Get all products containing "apple"  and "ipad"
+</p>
+{% highlight php %}
+<?php
+$search = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
+$query
+    ->where($query->contains('apple'))
+    ->andWhere($query->contains('ipad'));
+
+// the same but shorter
+$query->containsOneOf('apple', 'ipad');
+
+{% endhighlight %}
+
+
+<p> Exclude terms </p>
+{% highlight php  %}
+<?php
+$query->containsNot('ipad', 'apple');
+{% endhighlight %}
+
+
+
+
+<p> Combine with OR: Find (apple and "iphone") or (samsung and "galaxy") </p>
+{% highlight php  %}
+<?php
+
+$query
+    ->where($query
+        ->contains('apple')
+        ->exactly('iphone')
+    )
+    ->orWhere($query
+        ->contains('samsung')
+        ->exactly('galaxy')
+    );
+
+{% endhighlight %}
+
+
+
+<p> Combine  OR with AND
+<pre>
+    ( "t-mobile")
+
+    AND
+    (
+        (  apple AND "iphone" )
+        OR
+        (  samsung AND "galaxy" )
+
+    )
+</pre>
+
+</p>
+{% highlight php  %}
+<?php
+$query
+    ->where($query->exactly('t-mobile'))
+    ->andWhere($query
+        ->where($query
+            ->contains('apple')
+            ->exactly('iphone')
+        )
+        ->orWhere($query
+            ->contains('samsung')
+            ->exactly('galaxy')
+        )
+    );
+{% endhighlight %}

@@ -12,6 +12,9 @@ sections:
   - slug: products-extended
     title: Extended search with pagination
       
+  - slug: products-querybuilder
+    title: Query Builder for complex searches
+  
   - slug: products-facets
     title: Faceted Search
   
