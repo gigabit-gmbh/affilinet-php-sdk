@@ -715,14 +715,14 @@ class ProductsRequestTest extends \PHPUnit_Framework_TestCase
 
         $search->query(
             $query->where(
-                $query->exactly('test')
+                $query->expr()->exactly('test')
                     ->containsOneOf('sdf', 's4p', '9340fhj')
                     ->containsNot('mia', 'fsdoij')
             )
-            ->andWhere($query->containsAllOf('mai', 'pdoskf'))
+            ->andWhere($query->expr()->containsAllOf('mai', 'pdoskf'))
 
         );
-        $this->assertEquals('Query=+%28+%28+%22test%22+AND+%28+OR+%22sdf%22++OR+%22s4p%22++OR+%229340fhj%22+%29+AND+%28+NOT+%22mia%22++NOT+%22fsdoij%22+%29+%29++AND+%28+AND+%22mai%22++AND+%22pdoskf%22+%29+%29+', $search->serialize());
+        $this->assertEquals('Query=+%28+%22test%22++OR++sdf++OR++s4p++OR++9340fhj++NOT++NOT++mia++NOT++fsdoij++%29++AND++%28+mai++AND++pdoskf++%29+', $search->serialize());
     }
 
     public function testQueryBuilderWhere()
@@ -732,12 +732,12 @@ class ProductsRequestTest extends \PHPUnit_Framework_TestCase
 
         $search->query(
             $query
-                ->where($query->exactly('test'))
-                ->where($query->exactly('test2'))
-                ->where($query->exactly('test3'))
-                ->orWhere($query->containsAllOf('test4', 'test5'))
+                ->where($query->expr()->exactly('test'))
+                ->where($query->expr()->exactly('test2'))
+                ->where($query->expr()->exactly('test3'))
+                ->orWhere($query->expr()->containsAllOf('test4', 'test5'))
         );
-        $this->assertEquals('Query=+OR+%28+%28+%28+%28+%22test%22+%29++AND+%22test2%22+%29++AND+%22test3%22+%29++AND+%28+AND+%22test4%22++AND+%22test5%22+%29+%29+', $search->serialize());
+        $this->assertEquals('Query=+%28+%22test%22++%29++AND++%28+%22test2%22++%29++AND++%28+%22test3%22++%29++OR++%28+test4++AND++test5++%29+', $search->serialize());
     }
 
     public function testQueryBuilderContains()
@@ -747,14 +747,14 @@ class ProductsRequestTest extends \PHPUnit_Framework_TestCase
 
         $search->query(
             $query
-                ->where($query
+                ->where($query->expr()
                     ->contains('test1')
                     ->containsNot('test2'))
-                ->orWhere($query
+                ->orWhere($query->expr()
                     ->exactly('test3')
                     ->contains('test4'))
         );
-        $this->assertEquals('Query=+OR+%28+%28+%22test1%22+NOT+%22test2%22++%29++AND+%22test3%22+AND+%22test4%22+%29+', $search->serialize());
+        $this->assertEquals('Query=+%28+test1++NOT+%22test2%22++%29++OR++%28+%22test3%22++AND++test4++%29+', $search->serialize());
     }
 
     /**

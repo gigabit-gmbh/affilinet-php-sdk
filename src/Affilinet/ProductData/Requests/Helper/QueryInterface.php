@@ -18,52 +18,22 @@ interface QueryInterface
     public function getQuery();
 
     /**
-     * @param  QueryInterface $queryBuilder
+     * @param  Expression $expression
      * @return QueryInterface
      */
-    public function where(QueryInterface $queryBuilder);
+    public function where(Expression $expression);
 
     /**
-     * @param  QueryInterface $queryBuilder
+     * @param  Expression $expression
      * @return QueryInterface
      */
-    public function andWhere(QueryInterface $queryBuilder);
+    public function andWhere(Expression $expression);
 
     /**
-     * @param  QueryInterface $queryBuilder
+     * @param  Expression $expression
      * @return QueryInterface
      */
-    public function orWhere(QueryInterface $queryBuilder);
+    public function orWhere(Expression $expression);
 
-    /**
-     * @param $keyword string
-     * @return QueryInterface
-     */
-    public function exactly($keyword);
-
-    /**
-     * @param array ...$keywords
-     * @return mixed
-     */
-    public function containsOneOf(...$keywords);
-
-    /**
-     *
-     * @param  string         $keyword
-     * @return QueryInterface
-     */
-    public function contains($keyword);
-
-    /**
-     * @param  array          $keywords
-     * @return QueryInterface
-     */
-    public function containsAllOf(...$keywords);
-
-    /**
-     * @param  array          $keywords
-     * @return QueryInterface
-     */
-    public function containsNot(...$keywords);
 
 }

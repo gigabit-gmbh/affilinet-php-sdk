@@ -42,7 +42,7 @@ class ShopsRequestTest extends \PHPUnit_Framework_TestCase
         $search->addShopLogoWithSize90px();
         $search->addShopLogoWithSize120px();
         $search->addShopLogoWithSize468px();
-        $this->assertEquals('LogoScale=Logo50%2CLogo90%2CLogo120%2CLogo468', $search->serialize());
+        $this->assertEquals('LogoScales=Logo50%2CLogo90%2CLogo120%2CLogo468', $search->serialize());
     }
 
     public function testOnlyShopMatchingKeyword()
