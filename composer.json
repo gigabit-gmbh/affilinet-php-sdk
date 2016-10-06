@@ -1,7 +1,6 @@
 {
   "name": "affilinet/productdata-php-sdk",
   "description": "affilinet Product Data PHP SDK",
-  "version" : "0.0.1",
   "keywords": ["affilinet", "sdk"],
   "type": "library",
   "homepage": "https://github.com/affilinet/productdata-php-sdk",
