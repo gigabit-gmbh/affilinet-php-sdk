@@ -6,12 +6,8 @@ try {
     // create a Product Search Request Object
     $search = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
 
-    // Create a query for the Product Search Request
-    $query = new \Affilinet\ProductData\Requests\Helper\Query();
-    $query->where($query->exactly('T-Shirt'));
-
-    // add the query to $search
-    $search->query( $query);
+    // perform a fulltext search
+    $search->addRawQuery( 'tshirt');
 
     // send the query and get the response
     $response = $search->send();

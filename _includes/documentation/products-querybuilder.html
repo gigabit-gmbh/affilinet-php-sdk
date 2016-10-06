@@ -1,5 +1,5 @@
 <p>
-    The SDK provides a Query Builder to easily generate complex SQL-like search requests .
+    The SDK provides a Query Builder to easily generate complex SQL-like search requests.
 </p>
 
 <div class="well well-sm">
@@ -16,11 +16,15 @@
 <?php
 $search = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
 $query = new \Affilinet\ProductData\Requests\Helper\Query();
-
 $query
-    ->where($query->contains('apple'))
-    ->andWhere($query->containsNot('ipod', 'iphone', 'mac', 'iPad' ));
+    ->where(
+        $query
+            ->expr()
+            ->contains('apple')
+            ->containsNot('ipod', 'iphone', 'mac', 'iPad' ) // you can add as many parameters as you like or an array
+    );
 $search->query( $query);
+
 $response = $search->send();
 
 {% endhighlight %}
@@ -32,12 +36,15 @@ $response = $search->send();
 {% highlight php %}
 <?php
 $search = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
+$query = new \Affilinet\ProductData\Requests\Helper\Query();
 $query
-    ->where($query->contains('apple'))
-    ->andWhere($query->contains('ipad'));
-
-// the same but shorter
-$query->containsOneOf('apple', 'ipad');
+    ->where(
+        $query
+            ->expr()
+            ->contains('apple')
+            ->contains('ipad')
+    );
+$search->query( $query);
 
 {% endhighlight %}
 
@@ -45,7 +52,7 @@ $query->containsOneOf('apple', 'ipad');
 <p> Exclude terms </p>
 {% highlight php  %}
 <?php
-$query->containsNot('ipad', 'apple');
+$query->where($query->expr()->containsNot('ipad', 'apple'));
 {% endhighlight %}
 
 
@@ -56,11 +63,11 @@ $query->containsNot('ipad', 'apple');
 <?php
 
 $query
-    ->where($query
+    ->where($query->epxr()
         ->contains('apple')
         ->exactly('iphone')
     )
-    ->orWhere($query
+    ->orWhere($query->expr()
         ->contains('samsung')
         ->exactly('galaxy')
     );
@@ -81,20 +88,21 @@ $query
 
     )
 </pre>
-
 </p>
+
 {% highlight php  %}
 <?php
-$query
-    ->where($query->exactly('t-mobile'))
-    ->andWhere($query
-        ->where($query
-            ->contains('apple')
-            ->exactly('iphone')
-        )
-        ->orWhere($query
-            ->contains('samsung')
-            ->exactly('galaxy')
-        )
-    );
+$search->query($query
+    ->andWhere($query->expr()
+        ->contains('apple')
+        ->exactly('iphone')
+        ->exactly('t-mobile')
+    )
+    ->orWhere($query->expr()
+        ->contains('samsung')
+        ->exactly('galaxy')
+        ->exactly('t-mobile')
+    )
+);
+
 {% endhighlight %}

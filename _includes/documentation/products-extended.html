@@ -10,6 +10,7 @@ $search
     ->minPrice(1)   // minimum price: one euro
     ->page(2) // show the second result page page (page parameter starts counting at 1)
     ->pageSize(20) // 20 results per page
+    ->addRawQuery('tshirt')
     ;
 
 // will return a Product Response Object

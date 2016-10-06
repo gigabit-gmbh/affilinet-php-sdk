@@ -21,14 +21,11 @@
 <?php
 
 $search = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
+$search->addRawQuery( 'tshirt');
 
 // add the band facet and show a maximum of 15 different brands
 $search->addFacetBrand(15);
 
-// Create a query for the ProductsRequest
-$query = new \Affilinet\ProductData\Requests\Helper\Query();
-$query->where($query->exactly('T-Shirt'));
-$search->query( $query);
 
 // will return a ProductsResponse Object
 $productsResponse = $search->send();
