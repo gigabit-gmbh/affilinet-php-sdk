@@ -139,12 +139,9 @@ foreach ($productResponse->getFacets() as $facet) {
     To actually display the results behind these links you will have to extract the information from the URL and
     create a new ProductSearchRequest.
     For testing purposes you can create a ProductSearchRequest directly from the query string
-</p>
-<div role="alert" class="alert alert-danger">
-    <strong>Warning</strong>
-    <br>Do not use this code in production. Instead implement your own URL generator and ProductSearchRequest generator.
 
-</div>
+</p>
+
 
 {% highlight php linenos %}
 <?php
@@ -157,3 +154,15 @@ $products = $search->send();
 
 {% endhighlight %}
 
+<p>
+    When implementing an own solution use <code>addFilterQuery($name, $value)</code> to filter to a facets result.
+    <br>
+    <strong>Example:</strong>
+    <br> You have added the "Brand" Facet with <code>$search->addFacetBrand()</code>.
+    <br> A User clicks on on the facet with value "Adidas"
+    <br> On the resultpage you will have to add a filterQuery like this:
+    <br> <code>$search->addFilterQuery('Brand', 'Adidas')</code>
+    <br> The results will be filtered to 'Brand' === 'Adidas'
+
+
+</p>
