@@ -1,34 +1,3 @@
-
-
-<h3>Find products by productID</h3>
-<p>
-    Request a single product by its productID
-</p>
-{% highlight php linenos %}
-<?php
-// will directly return a Product Object
-$product = $search->findOne('123456789');
-echo $product->getProductName();
-echo $product->getPriceInformation()->getDisplayPrice();
-
-{% endhighlight %}
-
-<p>Request several products by their productIDs </p>
-
-{% highlight php linenos %}
-<?php
-// will return a Product Response Object
-$productResponse = $search->find(['123', 65, 15651]);
-
-foreach ($productResponse->products() as $product) {
-echo $product->getProductName();
-echo $product->getPriceInformation()->getDisplayPrice();
-}
-
-{% endhighlight %}
-
-<h2>Extended search with pagination</h2>
-
 {% highlight php linenos %}
 <?php
 $search = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
