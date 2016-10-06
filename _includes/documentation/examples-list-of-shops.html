@@ -1,6 +1,7 @@
 
 
 {% highlight php linenos %}
+<?php
 // create a  Shop Search Request Object
 $shopSearch = new \Affilinet\ProductData\Requests\ShopsRequest($affilinet);
 
@@ -28,13 +29,13 @@ foreach ($response->getShops() as $shop) {
 
 <div role="alert" class="alert alert-info">
     <strong>Getting no results?</strong> <br>
-     Make sure you hav active partnerships.
+     Make sure you have an active partnership with at least one shop.
 </div>
 
 <p>
-To see a list of all shops you have an active partnership with create an empty ShopSearch
+To see a list of all shops create an empty shopSearch like this:
 {% highlight php linenos %}
-
+<?php
 $shopSearch = new \Affilinet\ProductData\Requests\ShopsRequest($affilinet);
 $allShops = $shopSearch->send();
 echo 'You have ' . $response->totalRecords() . ' shops with an active partnership';
