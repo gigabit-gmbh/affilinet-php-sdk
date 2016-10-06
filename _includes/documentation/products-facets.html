@@ -147,16 +147,19 @@ foreach ($productResponse->getFacets() as $facet) {
 <?php
 // create a Product Search Request Object
 $search = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
-// !!! DO NOT USE IN PRODCTION !!!
-$search->unserialize($_SERVER['QUERY_STRING']);
-// !!! DO NOT USE IN PRODCTION !!!
+
+$queryString = $_SERVER['QUERY_STRING']
+// do not forget to sanatize the query string!
+$search->unserialize($queryString);
+
 $products = $search->send();
 
 {% endhighlight %}
-
+<br>
+<br>
 <strong>Matching Facets and FilterQueries</strong>
-<p>
-    When implementing an own solution use <code>addFilterQuery($name, $value)</code> to filter to a facets result.
+<p class="well-sm well">
+    In your own solution use <code>addFilterQuery($name, $value)</code> to filter results according to Facets
     <br>
     <strong>Example:</strong>
     <br> You have added the "Brand" Facet with <code>$search->addFacetBrand()</code>.
@@ -164,6 +167,4 @@ $products = $search->send();
     <br> On the resultpage you will have to add a filterQuery like this:
     <br> <code>$search->addFilterQuery('Brand', 'Adidas')</code>
     <br> The results will be filtered to 'Brand' === 'Adidas'
-
-
 </p>
