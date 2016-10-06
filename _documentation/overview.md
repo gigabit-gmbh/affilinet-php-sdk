@@ -10,6 +10,8 @@ sections:
     sections: 
     - slug: overview-products-request
       title: Products request
+    - slug: overview-products-facets
+      title: Faceted search
     - slug: overview-products-response
       title: Products response
   - slug: overview-categories
