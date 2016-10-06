@@ -162,9 +162,12 @@ $products = $search->send();
     In your own solution use <code>addFilterQuery($name, $value)</code> to filter results according to Facets
     <br>
     <strong>Example:</strong>
-    <br> You have added the "Brand" Facet with <code>$search->addFacetBrand()</code>.
-    <br> A User clicks on on the facet with value "Adidas"
-    <br> On the resultpage you will have to add a filterQuery like this:
-    <br> <code>$search->addFilterQuery('Brand', 'Adidas')</code>
-    <br> The results will be filtered to 'Brand' === 'Adidas'
+    <ul>
+    <li>You have added the "Brand" Facet with <code>$search->addFacetBrand()</code>.</li>
+    <li>A User clicks on on the facet with value "Adidas"</li>
+    <li>On the resultpage you will have to add a filterQuery:  <code>$search->addFilterQuery('Brand', 'Adidas')</code></li>
+    <li>The results will be filtered to 'Brand' === 'Adidas'</li>
+
+</ul>
+
 </p>
