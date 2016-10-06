@@ -24,8 +24,8 @@ $search = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
 $productResponse = $search->find(['123', 65, 15651]);
 
 foreach ($productResponse->products() as $product) {
-echo $product->getProductName();
-echo $product->getPriceInformation()->getDisplayPrice();
+    echo $product->getProductName();
+    echo $product->getPriceInformation()->getDisplayPrice();
 }
 
 {% endhighlight %}

@@ -25,16 +25,16 @@ $search = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
 // add the band facet and show a maximum of 15 different brands
 $search->addFacetBrand(15);
 
-// Create a query for the Product Search Request
+// Create a query for the ProductsRequest
 $query = new \Affilinet\ProductData\Requests\Helper\Query();
 $query->where($query->exactly('T-Shirt'));
 $search->query( $query);
 
-// will return a Product Response Object
-$productResponse = $search->send();
+// will return a ProductsResponse Object
+$productsResponse = $search->send();
 
 // display the brand and the number of results for each brand
-foreach ($productResponse->getFacets() as $facet) {
+foreach ($productsResponse->getFacets() as $facet) {
     echo $facet->getName();
 
     foreach ($facet->getValues() as $facetValue) {
@@ -43,7 +43,7 @@ foreach ($productResponse->getFacets() as $facet) {
 }
 
 // show the results
-foreach ($productResponse->products() as $product) {
+foreach ($productsResponse->products() as $product) {
     echo $product->getProductName();
     echo $product->getPriceInformation()->getDisplayPrice();
 }
@@ -70,23 +70,25 @@ foreach ($productResponse->products() as $product) {
     <li>Deprecated: <code>$search->addFacetShopName()</code></li>
     <li>Deprecated: <code>$search->addFacetProgramId()</code></li>
 </ul>
+<br>
+<br>
 
-<h5>Generating facet links</h5>
+<strong>Generating Facet Links</strong>
 <p>
     By now we just displayed the result count for each facet.
     For sure you want to use these facets as a filter on your page.
 
     <br>
     To make this work you will have to convert each facet into an URL.
-    There are several ways to achieve this
-
+    There are several ways to achieve this.
+    <div class="well well-sm">
+        You should use your own implementation to generate facet URLs. The method <code>generateQueryString()</code>
+        is just included for your convenience.
+    </div>
 </p>
 
-<h6>Using the build in querystring generator</h6>
-<div role="alert" class="alert alert-info">
-    You should use your own implementation to generate facet URLs. The method <code>generateQueryString()</code>
-    is just included for your convenience.
-</div>
+<strong>Generate Facet Links with the querystring generator</strong>
+
 
 {% highlight php linenos %}
 <?php
@@ -105,7 +107,7 @@ foreach ($facet->getValues() as $facetValue) {
 {% endhighlight %}
 
 
-<h6>Using a custom routing component (the better way) </h6>
+<strong>Generate Facet Links with a custom router (the better way) </strong>
 
 {% highlight php linenos %}
 <?php
@@ -114,15 +116,15 @@ foreach ($productResponse->getFacets() as $facet) {
     echo $facet->getName();
 
     foreach ($facet->getValues() as $facetValue) {
-        // generate a new ProductSearchRequest for each facetValue
-        $newProductSearchRequestString = $facetValue->generateSerializedSearchProductsRequest($search);
+        // generate a new ProductRequest for each facetValue
+        $newProductsRequestString = $facetValue->generateSerializedSearchProductsRequest($search);
 
         // use the serialized Object to generate the ProductSearchRequest object
-        $newProductSearchRequest = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
-        $newProductSearchRequest->unserialize($newProductSearchRequestString);
+        $newProductsRequest = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
+        $newProductsRequest->unserialize($newProductsRequestString);
 
-        // use  $newProductSearchRequest or $newProductSearchRequestString to generate an URL with your router
-        $url = YourRouter::generateURL($newProductSearchRequest);
+        // use  $newProductsRequest or $newProductsRequestString to generate an URL with your router
+        $url = YourRouter::generateURL($newProductsRequest);
 
         echo "<a href='$url'> ". $facetValue->getDisplayValue() . '</a><br>';
     }
@@ -130,7 +132,9 @@ foreach ($productResponse->getFacets() as $facet) {
 
 {% endhighlight %}
 
-<h5>Generate the resultpage for facet links</h5>
+<br>
+<br>
+<strong>Generate the resultpage for facet links</strong>
 <p>
     To actually display the results behind these links you will have to extract the information from the URL and
     create a new ProductSearchRequest.

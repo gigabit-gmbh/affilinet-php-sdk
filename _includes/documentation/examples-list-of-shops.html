@@ -33,11 +33,11 @@ foreach ($response->getShops() as $shop) {
 </div>
 
 <p>
-To see a list of all shops create an empty shopSearch like this:
+To see a list of all shops create an empty ShopsRequest like this:
 {% highlight php linenos %}
 <?php
-$shopSearch = new \Affilinet\ProductData\Requests\ShopsRequest($affilinet);
-$allShops = $shopSearch->send();
+$shopsRequest = new \Affilinet\ProductData\Requests\ShopsRequest($affilinet);
+$allShops = $shopsRequest->send();
 echo 'You have ' . $response->totalRecords() . ' shops with an active partnership';
 {% endhighlight %}
 
