@@ -1,0 +1,42 @@
+
+
+{% highlight php linenos %}
+// create a  Shop Search Request Object
+$shopSearch = new \Affilinet\ProductData\Requests\ShopsRequest($affilinet);
+
+$shopSearch
+    ->addAllShopLogos()     // to include all logo sizes
+    ->onlyShopsMatchingKeyword('Zalando') // only shops which match this keyword
+    ->onlyShopsUpdatedAfter(new \DateTime('last month')); // only shops that have updated their products after this date
+
+
+// send the query and get the response
+$response = $shopSearch->send();
+
+echo 'Total results : ' . $response->totalRecords();
+
+// display some information about the found shops
+foreach ($response->getShops() as $shop) {
+    echo $shop->getName();
+    echo $shop->getId();
+    echo $shop->getProductCount();
+    echo $shop->getLastUpdate()->format('dmY h:i:s');
+    echo $shop->getUrl();
+}
+
+{% endhighlight %}
+
+<div role="alert" class="alert alert-info">
+    <strong>Getting no results?</strong> <br>
+     Make sure you hav active partnerships.
+</div>
+
+<p>
+To see a list of all shops you have an active partnership with create an empty ShopSearch
+{% highlight php linenos %}
+
+$shopSearch = new \Affilinet\ProductData\Requests\ShopsRequest($affilinet);
+$allShops = $shopSearch->send();
+echo 'You have ' . $response->totalRecords() . ' shops with an active partnership';
+{% endhighlight %}
+

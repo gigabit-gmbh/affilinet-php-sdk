@@ -1,41 +1,33 @@
 <p>
 {% highlight php linenos %}
-<?php 
-$config = [
-    'publisher_id' => {PUBLISHER ID},
-    'product_webservice_password' => {PRODUCT WEBSERVICE PASSWORD}
-];
-
-$affilinet = new \Affilinet\ProductData\AffilinetClient($config);
-
-// simple search for t-shirts (using the product webservice)
 try {
-    $search = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
-    $query = new \Affilinet\ProductData\Requests\Helper\Query();
+    // create the client
+    $affilinet = new \Affilinet\ProductData\AffilinetClient($config);
 
+    // create a Product Search Request Object
+    $search = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
+
+    // Create a query for the Product Search Request
+    $query = new \Affilinet\ProductData\Requests\Helper\Query();
     $query->where($query->exactly('T-Shirt'));
 
-    $search
-        ->query( $query)
-        ->onlyWithImage()
-        ->minPrice(1)
-        ->maxPrice(100)
-        ->page(1)
-        ->pageSize(20);
+    // add the query to $search
+    $search->query( $query);
 
+    // send the query and get the response
     $response = $search->send();
 }
-
 catch (\Affilinet\ProductData\Exceptions\AffilinetProductWebserviceException $e) {
     // If there is an error within your $search
     echo 'Error: ' . $e->getMessage();
 }
-
-echo 'Total results : ' . $response->totalRecords() ;
+echo 'Total results : ' . $response->totalRecords();
 
 foreach ($response->getProducts() as $product) {
     echo $product->getProductName();
     echo $product->getPriceInformation()->getDisplayPrice();
 }
+
 {% endhighlight %}
+
 </p>

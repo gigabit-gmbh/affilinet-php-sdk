@@ -1,0 +1,19 @@
+<p>
+    First of all you have to create the client object. It is used to send all requests to the affilinet API.
+
+
+{% highlight php linenos %}
+$config = [
+    'publisher_id' => {PUBLISHER ID},
+    'product_webservice_password' => {PRODUCT WEBSERVICE PASSWORD}
+];
+
+$affilinet = new \Affilinet\ProductData\AffilinetClient($config);
+
+{% endhighlight %}
+</p>
+
+<div role="alert" class="alert alert-info">
+    <strong>Heads up!</strong> <br>
+    All examples use the affilinet client object named <code>$affilinet</code> as created above.
+</div>
