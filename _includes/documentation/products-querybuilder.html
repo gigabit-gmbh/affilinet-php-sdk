@@ -12,16 +12,31 @@
 {% highlight php  %}
 <?php
 $query = new \Affilinet\ProductData\Requests\Helper\Query();
-$query->where($query->expr()->containsAllOf('ipad', 'apple'));
-$productsRequest->query($query)->send();
+
+$query->where(
+        $query->expr()->containsAllOf('ipad', 'apple')
+);
+
+$productsRequest
+    ->query($query)
+    ->send();
+
 {% endhighlight %}
 
 <p>Alternativly you can chain expressions</p>
 {% highlight php  %}
 <?php
 $query = new \Affilinet\ProductData\Requests\Helper\Query();
-$query->where($query->expr()->contains('ipad')->contains('apple'));
-$productsRequest->query($query)->send();
+$query->where(
+    $query->expr()
+        ->contains('ipad')
+        ->contains('apple')
+);
+
+$productsRequest
+    ->query($query)
+    ->send();
+
 {% endhighlight %}
 
 
@@ -30,7 +45,11 @@ $productsRequest->query($query)->send();
 {% highlight php  %}
 <?php
 // will include apple but not applejuice
-$query->where($query->expr()->exactly('apple'));
+$query->where(
+    $query
+        ->expr()
+        ->exactly('apple')
+);
 {% endhighlight %}
 
 
@@ -38,8 +57,13 @@ $query->where($query->expr()->exactly('apple'));
 <p> Combine terms with OR </p>
 {% highlight php  %}
 <?php
-// will include apple but not applejuice
-$query->where($query->expr()->containsOneOf('apple', 'samsung'));
+// will include results matching apple or samsung
+$query->where(
+    $query
+        ->expr()
+        // you can add as many parameters as you like or an array
+        ->containsOneOf('apple', 'samsung')
+);
 {% endhighlight %}
 
 
@@ -47,7 +71,13 @@ $query->where($query->expr()->containsOneOf('apple', 'samsung'));
 <p> Exclude terms </p>
 {% highlight php  %}
 <?php
-$query->where($query->expr()->containsNot('ipad', 'apple'));
+$query->where(
+    $query
+        ->expr()
+        // you can add as many parameters as you like or an array
+        ->containsNot('ipad', 'apple')
+);
+
 {% endhighlight %}
 
 
@@ -67,7 +97,8 @@ $query
         $query
             ->expr()
             ->contains('apple')
-            ->containsNot('ipod', 'iphone', 'mac', 'iPad' ) // you can add as many parameters as you like or an array
+            // you can add as many parameters as you like or an array
+            ->containsNot('ipod', 'iphone', 'mac', 'iPad' )
     );
 $productsRequest->query( $query);
 
