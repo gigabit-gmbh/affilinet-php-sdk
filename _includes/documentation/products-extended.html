@@ -1,3 +1,10 @@
+
+<p>
+    There are a lot of filters for each ProductsRequest. Have a look  at the
+    <a href="https://github.com/affilinet/productdata-php-sdk/blob/master/src/Affilinet/ProductData/Requests/ProductsRequestInterface.php" target="_blank">ProductsRequestInterface</a>
+    to see all available filter methods.
+</p>
+
 {% highlight php linenos %}
 <?php
 $productsRequest = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
@@ -10,6 +17,12 @@ $productsRequest
     ->minPrice(1)   // minimum price: one euro
     ->page(2) // show the second result page page (page parameter starts counting at 1)
     ->pageSize(20) // 20 results per page
+
+    /**
+     * Possible Sorting Parameters defined as class constants:
+     * SORT_BY_RELEVANCE, SORT_BY_PRODUCT_NAME, SORT_BY_LAST_PROGRAM_LIST_UPDATE
+     **/
+    ->sort(\Affilinet\ProductData\Requests\ProductsRequest::SORT_BY_PRICE, true);
     ->addRawQuery('tshirt')
     ;
 
@@ -22,3 +35,4 @@ foreach ($productResponse->products() as $product) {
 }
 
 {% endhighlight %}
+
