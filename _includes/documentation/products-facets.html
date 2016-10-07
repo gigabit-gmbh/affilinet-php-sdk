@@ -118,8 +118,8 @@ foreach ($productResponse->getFacets() as $facet) {
     echo $facet->getName();
 
     foreach ($facet->getValues() as $facetValue) {
-        // generate a new ProductRequest for each facetValue
-        $newProductsRequestString = $facetValue->generateSerializedSearchProductsRequest($productsRequest);
+        // generate a new ProductsRequest for each facetValue
+        $newProductsRequestString = $facetValue->generateSerializedProductsRequest($productsRequest);
 
         // use the serialized Object to generate the ProductSearchRequest object
         $newProductsRequest = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
@@ -172,10 +172,11 @@ $products = $productsRequest->send();
 
 </ul>
 
-</p>
+<br>
+<br>
 
 <strong> Facets and their corresponding Filter Query</strong>
-
+</p>
 <div class="table-responsive">
     <table class="table">
         <thead>
