@@ -191,3 +191,49 @@ $productsRequest->query($query
 {% endhighlight %}
 <br>
 <br>
+
+<p>
+    <strong>Write queries by yourself</strong><br>
+    Instead of using the query builder you can write queries by yourself and attach them via
+    <br>
+    <code>$productsRequest->addRawQuery(YOUR_QUERY_STRING)</code>
+<br>
+    The keyword(s) you want the products to match. Can be
+    any length. The following search operators are supported:
+    <ul>
+    <li><strong>AND</strong> (both query tokens must be contained in the
+        product, but not necessarily next to one another)</li>
+    <li><strong>OR</strong> (any of the query tokens must be contained in the
+        product)</li>
+    <li><strong>NOT</strong> (e.g. with “ipod AND NOT nano”, you will get
+        products, which match the query “ipod”, but at the
+        same time don’t match “nano”)</li>
+    <li><strong>"</strong>
+        (phrase match: all query tokens inclosed with double
+        quotes must be contained in the found products in
+        that order)</li>
+    <li><strong>()</strong> Parentheses, to group expressions</li>
+</ul>
+So you can formulate a query like this:
+<br>
+<code>"apple ipod" ((touch OR classic) NOT nano) AND "32 GB"</code>
+<br>
+ProductsRequest supports the wildcard ‘*’ for suffix
+matching, that is: a query ‘bott*’ will match for products,
+which contain the word “bottle” or the word “bottom”.
+Search operators “AND”, “OR” and “NOT” must be in
+capital letters.
+
+</p>
+
+{% highlight php  %}
+<?php
+$productsRequest
+    ->addRawQuery(
+        ' "apple ipod" ((touch OR classic) NOT nano) AND  "32 GB"'
+    );
+
+{% endhighlight %}
+
+<br>
+<br>
