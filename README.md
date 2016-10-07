@@ -30,7 +30,7 @@ try {
     $search = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
     $query = new \Affilinet\ProductData\Requests\Helper\Query();
     
-    $query->where($query->exactly('T-Shirt'));
+    $query->where($query->expr()->exactly('T-Shirt'));
     
     $search
         ->query( $query)
