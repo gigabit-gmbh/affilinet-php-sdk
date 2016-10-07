@@ -8,6 +8,11 @@
     products and how often. Up to 50 different brands will be returned, together with the quantity of
     products for each brand - depending on the input parameter <code>$facetValueLimit</code>.
     By default 20 Facet values will be returned
+    <br>
+    <br>
+    Each facet type has a corresponding <a href="#facet_result_page">FilterQuery</a>.
+    A Filter Query is used to filter results to one facet value.
+
 </p>
 
 <div role="alert" class="alert alert-warning">
@@ -131,7 +136,7 @@ foreach ($productResponse->getFacets() as $facet) {
 
 <br>
 <br>
-<strong>Generate the resultpage for facet links</strong>
+<strong id="facet_result_page">Generate the resultpage for facet links</strong>
 <p>
     To actually display the results behind these links you will have to extract the information from the URL and
     create a new ProductSearchRequest.
@@ -168,3 +173,101 @@ $products = $productsRequest->send();
 </ul>
 
 </p>
+
+<strong> Facets and their corresponding Filter Query</strong>
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Facet</th>
+            <th>FilterQuery</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr>
+            <td><code>$productsRequest->addFacetArticleNumber()</code></td>
+            <td><code>$productsRequest->addFilterQuery('ArticleNumber', VALUE)</code></td>
+        </tr>
+        <tr>
+            <td><code>$productsRequest->addFacetBrand()</code></td>
+            <td><code>$productsRequest->addFilterQuery('Brand', VALUE)</code></td>
+        </tr>
+        <tr>
+            <td><code>$productsRequest->addFacetDistributor()</code></td>
+            <td><code>$productsRequest->addFilterQuery('Distributor', VALUE)</code></td>
+        </tr>
+        <tr>
+            <td><code>$productsRequest->addFacetEAN()</code></td>
+            <td><code>$productsRequest->addFilterQuery('EAN', VALUE)</code></td>
+        </tr>
+        <tr>
+            <td><code>$productsRequest->addFacetManufacturer()</code></td>
+            <td><code>$productsRequest->addFilterQuery('Manufacturer', VALUE)</code></td>
+        </tr>
+        <tr>
+            <td><code>$productsRequest->addFacetShopId()</code></td>
+            <td><code>$productsRequest->addFilterQuery('ShopId', VALUE)</code></td>
+        </tr>
+        <tr>
+            <td><code>$productsRequest->addFacetAffilinetCategoryId()</code></td>
+            <td><code>$productsRequest->addFilterQuery('AffilinetCategoryId', VALUE)</code></td>
+        </tr>
+        <tr>
+            <td><code>$productsRequest->addFacetAffilinetCategoryPath()</code></td>
+            <td><code>$productsRequest->addFilterQuery('AffilinetCategoryPath', VALUE)</code></td>
+
+        </tr>
+        <tr>
+            <td><code>$productsRequest->addFacetShopCategoryId()</code></td>
+            <td><code>$productsRequest->addFilterQuery('ShopCategoryId', VALUE)</code></td>
+
+        </tr>
+        <tr>
+            <td><code>$productsRequest->addFacetShopCategoryPath()</code></td>
+            <td><code>$productsRequest->addFilterQuery('ShopCategoryPath', VALUE)</code></td>
+        </tr>
+        <tr>
+            <td><code>$productsRequest->addFacetShopName()</code></td>
+            <td><code>$productsRequest->addFilterQuery('ShopName', VALUE)</code></td>
+        </tr>
+        <tr>
+            <td><code>$productsRequest->addFacetProgramId()</code></td>
+            <td><code>$productsRequest->addFilterQuery('ProgramId', VALUE)</code></td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
