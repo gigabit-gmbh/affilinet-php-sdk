@@ -14,7 +14,7 @@
 
 {% highlight php linenos %}
 <?php
-$search = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
+$productsRequest = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
 $query = new \Affilinet\ProductData\Requests\Helper\Query();
 $query
     ->where(
@@ -23,9 +23,9 @@ $query
             ->contains('apple')
             ->containsNot('ipod', 'iphone', 'mac', 'iPad' ) // you can add as many parameters as you like or an array
     );
-$search->query( $query);
+$productsRequest->query( $query);
 
-$response = $search->send();
+$response = $productsRequest->send();
 
 {% endhighlight %}
 
@@ -35,7 +35,7 @@ $response = $search->send();
 </p>
 {% highlight php %}
 <?php
-$search = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
+$productsRequest = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
 $query = new \Affilinet\ProductData\Requests\Helper\Query();
 $query
     ->where(
@@ -44,7 +44,7 @@ $query
             ->contains('apple')
             ->contains('ipad')
     );
-$search->query( $query);
+$productsRequest->query( $query);
 
 {% endhighlight %}
 
@@ -92,7 +92,7 @@ $query
 
 {% highlight php  %}
 <?php
-$search->query($query
+$productsRequest->query($query
     ->andWhere($query->expr()
         ->contains('apple')
         ->exactly('iphone')

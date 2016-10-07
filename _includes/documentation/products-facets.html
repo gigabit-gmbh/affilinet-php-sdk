@@ -20,15 +20,15 @@
 {% highlight php linenos %}
 <?php
 
-$search = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
-$search->addRawQuery( 'tshirt');
+$productsRequest = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
+$productsRequest->addRawQuery( 'tshirt');
 
 // add the band facet and show a maximum of 15 different brands
-$search->addFacetBrand(15);
+$productsRequest->addFacetBrand(15);
 
 
 // will return a ProductsResponse Object
-$productsResponse = $search->send();
+$productsResponse = $productsRequest->send();
 
 // display the brand and the number of results for each brand
 foreach ($productsResponse->getFacets() as $facet) {
@@ -53,19 +53,19 @@ foreach ($productsResponse->products() as $product) {
     Facets can not only be added for Brand. You can choose up to four of these facets
 </p>
 <ul>
-    <li><code>$search->addFacetArticleNumber()</code></li>
-    <li><code>$search->addFacetBrand()</code></li>
-    <li><code>$search->addFacetDistributor()</code></li>
-    <li><code>$search->addFacetEAN()</code></li>
-    <li><code>$search->addFacetManufacturer()</code></li>
-    <li><code>$search->addFacetShopId()</code></li>
-    <li><code>$search->addFacetAffilinetCategoryId()</code></li>
-    <li><code>$search->addFacetAffilinetCategoryPath()</code></li>
-    <li><code>$search->addFacetShopCategoryId()</code></li>
-    <li><code>$search->addFacetShopCategoryPath()</code></li>
+    <li><code>$productsRequest->addFacetArticleNumber()</code></li>
+    <li><code>$productsRequest->addFacetBrand()</code></li>
+    <li><code>$productsRequest->addFacetDistributor()</code></li>
+    <li><code>$productsRequest->addFacetEAN()</code></li>
+    <li><code>$productsRequest->addFacetManufacturer()</code></li>
+    <li><code>$productsRequest->addFacetShopId()</code></li>
+    <li><code>$productsRequest->addFacetAffilinetCategoryId()</code></li>
+    <li><code>$productsRequest->addFacetAffilinetCategoryPath()</code></li>
+    <li><code>$productsRequest->addFacetShopCategoryId()</code></li>
+    <li><code>$productsRequest->addFacetShopCategoryPath()</code></li>
 
-    <li>Deprecated: <code>$search->addFacetShopName()</code></li>
-    <li>Deprecated: <code>$search->addFacetProgramId()</code></li>
+    <li>Deprecated: <code>$productsRequest->addFacetShopName()</code></li>
+    <li>Deprecated: <code>$productsRequest->addFacetProgramId()</code></li>
 </ul>
 <br>
 <br>
@@ -95,7 +95,7 @@ echo $facet->getName();
 
 foreach ($facet->getValues() as $facetValue) {
     // generate a query string and attach it to your URL
-    $url = '/' . $facetValue->generateQueryString($search);
+    $url = '/' . $facetValue->generateQueryString($productsRequest);
 
     echo "<a href='$url'> ". $facetValue->getDisplayValue() . '</a><br>';
     }
@@ -114,7 +114,7 @@ foreach ($productResponse->getFacets() as $facet) {
 
     foreach ($facet->getValues() as $facetValue) {
         // generate a new ProductRequest for each facetValue
-        $newProductsRequestString = $facetValue->generateSerializedSearchProductsRequest($search);
+        $newProductsRequestString = $facetValue->generateSerializedSearchProductsRequest($productsRequest);
 
         // use the serialized Object to generate the ProductSearchRequest object
         $newProductsRequest = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
@@ -143,13 +143,13 @@ foreach ($productResponse->getFacets() as $facet) {
 {% highlight php linenos %}
 <?php
 // create a Product Search Request Object
-$search = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
+$productsRequest = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
 
 $queryString = $_SERVER['QUERY_STRING']
 // do not forget to sanatize the query string!
-$search->unserialize($queryString);
+$productsRequest->unserialize($queryString);
 
-$products = $search->send();
+$products = $productsRequest->send();
 
 {% endhighlight %}
 <br>
@@ -160,9 +160,9 @@ $products = $search->send();
 </p>
     <strong>Example:</strong>
     <ul>
-    <li>You have added the "Brand" Facet with <code>$search->addFacetBrand()</code>.</li>
+    <li>You have added the "Brand" Facet with <code>$productsRequest->addFacetBrand()</code>.</li>
     <li>A User clicks on on the facet with value "Adidas"</li>
-    <li>On the resultpage you will have to add a filterQuery:  <code>$search->addFilterQuery('Brand', 'Adidas')</code></li>
+    <li>On the resultpage you will have to add a filterQuery:  <code>$productsRequest->addFilterQuery('Brand', 'Adidas')</code></li>
     <li>The results will be filtered to 'Brand' === 'Adidas'</li>
 
 </ul>

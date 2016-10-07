@@ -4,16 +4,16 @@
 
 try {
     // create a Product Search Request Object
-    $search = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
+    $productsRequest = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
 
     // perform a fulltext search
-    $search->addRawQuery( 'tshirt');
+    $productsRequest->addRawQuery( 'tshirt');
 
     // send the query and get the response
-    $response = $search->send();
+    $response = $productsRequest->send();
 }
 catch (\Affilinet\ProductData\Exceptions\AffilinetProductWebserviceException $e) {
-    // If there is an error within your $search
+    // If there is an error within your $productsRequest
     echo 'Error: ' . $e->getMessage();
 }
 echo 'Total results : ' . $response->totalRecords();
