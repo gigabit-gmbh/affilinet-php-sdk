@@ -1,8 +1,5 @@
 <p>
     Facets must explicitly be requested in your ProductsRequest.
-    <br>
-    <br>
-    $pr
 </p>
 
 
@@ -14,7 +11,7 @@ $facets = $productResponse->getFacets();
 
 foreach( $facets as $facet) {
 
-    // each $facet a "Facet" object
+    // each $facet is a "Facet" object
     $facet->getName();  // for example "ShopCategoryPathFacet"
 
     foreach ($facet->getValues() as $facetValue) {
@@ -31,14 +28,14 @@ foreach( $facets as $facet) {
 
         /**
          * To get the results behind this facet value, generate a new ProductsRequest
-         * where $productsRequest is the original request of this page the correct filter will then be added to
+         * $productsRequest is the original request of this page
          * Can be used to generate a URL for the facet
          **/
         $facetValue->generateSerializedProductsRequest($productsRequest)
 
         /**
          * returns a new ProductsRequest serialized as a query string
-         * where $productsRequest is the original request of this page the correct filter will then be added to
+         * $productsRequest is the original request of this page
          * Can be used to generate a URL for the facet
          **/
         $facetValue->generateQueryString($productsRequest)
