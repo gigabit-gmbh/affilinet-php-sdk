@@ -2,17 +2,17 @@
 
 {% highlight php linenos %}
 <?php
-// create a  Shop Search Request Object
-$shopSearch = new \Affilinet\ProductData\Requests\ShopsRequest($affilinet);
+// create a  ShopsRequest Object
+$shopsRequest = new \Affilinet\ProductData\Requests\ShopsRequest($affilinet);
 
-$shopSearch
+$shopsRequest
     ->addAllShopLogos()     // to include all logo sizes
     ->onlyShopsMatchingKeyword('Zalando') // only shops which match this keyword
     ->onlyShopsUpdatedAfter(new \DateTime('last month')); // only shops that have updated their products after this date
 
 
 // send the query and get the response
-$response = $shopSearch->send();
+$response = $shopsRequest->send();
 
 echo 'Total results : ' . $response->totalRecords();
 

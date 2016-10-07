@@ -1,7 +1,7 @@
 {% highlight php linenos %}
 <?php
-$search = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
-$search
+$productsRequest = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
+$productsRequest
     ->onlyWithImage() // only include results with images
     ->addProductImage() // include the original image of the product
     ->excludeShopIds([123]) // do not include products from Shop with id 123
@@ -14,7 +14,7 @@ $search
     ;
 
 // will return a Product Response Object
-$productResponse = $search->send();
+$productResponse = $productsRequest->send();
 
 foreach ($productResponse->products() as $product) {
     echo $product->getProductName();
