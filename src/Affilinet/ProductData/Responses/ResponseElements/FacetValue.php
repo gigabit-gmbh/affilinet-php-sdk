@@ -84,7 +84,7 @@ class FacetValue implements FacetValueInterface
     }
 
     /**
-     * Returns the serialized SearchProductsRequest to retrieve the results behind this facet value
+     * Returns the serialized ProductsRequest to retrieve the results behind this facet value
      * Starting with "?" for usage as URI Query Parameter
      *
      * @param  ProductsRequestInterface $request
@@ -92,16 +92,16 @@ class FacetValue implements FacetValueInterface
      */
     public function generateQueryString(ProductsRequestInterface $request)
     {
-        return '?' . $this->generateSerializedSearchProductsRequest($request);
+        return '?' . $this->generateSerializedProductsRequest($request);
     }
 
     /**
-     * Returns the serialized SearchProductsRequest to retrieve the results behind this facet value
+     * Returns the serialized ProductsRequest to retrieve the results behind this facet value
      *
      * @param  ProductsRequestInterface $request
      * @return string
      */
-    public function generateSerializedSearchProductsRequest(ProductsRequestInterface $request)
+    public function generateSerializedProductsRequest(ProductsRequestInterface $request)
     {
         $newRequest = clone $request;
 

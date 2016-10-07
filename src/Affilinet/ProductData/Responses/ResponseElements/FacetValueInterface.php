@@ -34,12 +34,12 @@ interface FacetValueInterface
     public function getFacet();
 
     /**
-     * Returns the serialized SearchProductsRequest to retrieve the results behind this facet value
+     * Returns the serialized ProductsRequest to retrieve the results behind this facet value
      *
      * @param  ProductsRequestInterface $request
      * @return string
      */
-    public function generateSerializedSearchProductsRequest(ProductsRequestInterface $request);
+    public function generateSerializedProductsRequest(ProductsRequestInterface $request);
 
     /**
      * Returns the serialized SearchProductsRequest to retrieve the results behind this facet value

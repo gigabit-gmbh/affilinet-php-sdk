@@ -117,7 +117,7 @@ class FacetTest extends PHPUnit_Framework_TestCase
         $facet = new \Affilinet\ProductData\Responses\ResponseElements\Facet($data);
         $i = 0;
         foreach ($facet->getValues() as $facetValue) {
-            $this->assertEquals($expectedSerializedProductRequests[$i], $facetValue->generateSerializedSearchProductsRequest($request));
+            $this->assertEquals($expectedSerializedProductRequests[$i], $facetValue->generateSerializedProductsRequest($request));
             $this->assertEquals('?'.$expectedSerializedProductRequests[$i], $facetValue->generateQueryString($request));
             $i++;
         }
@@ -147,7 +147,7 @@ class FacetTest extends PHPUnit_Framework_TestCase
         $facet = new \Affilinet\ProductData\Responses\ResponseElements\Facet($data);
         $i = 0;
         foreach ($facet->getValues() as $facetValue) {
-            $this->assertEquals($expectedSerializedProductRequests[$i], $facetValue->generateSerializedSearchProductsRequest($request));
+            $this->assertEquals($expectedSerializedProductRequests[$i], $facetValue->generateSerializedProductsRequest($request));
             $this->assertEquals('?'.$expectedSerializedProductRequests[$i], $facetValue->generateQueryString($request));
             $i++;
         }
@@ -177,7 +177,7 @@ class FacetTest extends PHPUnit_Framework_TestCase
         $facet = new \Affilinet\ProductData\Responses\ResponseElements\Facet($data);
         $i = 0;
         foreach ($facet->getValues() as $facetValue) {
-            $this->assertEquals($expectedSerializedProductRequests[$i], $facetValue->generateSerializedSearchProductsRequest($request));
+            $this->assertEquals($expectedSerializedProductRequests[$i], $facetValue->generateSerializedProductsRequest($request));
             $this->assertEquals('?'.$expectedSerializedProductRequests[$i], $facetValue->generateQueryString($request));
             $i++;
         }
@@ -207,7 +207,7 @@ class FacetTest extends PHPUnit_Framework_TestCase
         $facet = new \Affilinet\ProductData\Responses\ResponseElements\Facet($data);
         $i = 0;
         foreach ($facet->getValues() as $facetValue) {
-            $this->assertEquals($expectedSerializedProductRequests[$i], $facetValue->generateSerializedSearchProductsRequest($request));
+            $this->assertEquals($expectedSerializedProductRequests[$i], $facetValue->generateSerializedProductsRequest($request));
             $this->assertEquals('?'.$expectedSerializedProductRequests[$i], $facetValue->generateQueryString($request));
             $i++;
         }
@@ -239,7 +239,7 @@ class FacetTest extends PHPUnit_Framework_TestCase
         $facet = new \Affilinet\ProductData\Responses\ResponseElements\Facet($data);
         $i = 0;
         foreach ($facet->getValues() as $facetValue) {
-            $this->assertEquals($expectedSerializedProductRequests[$i], $facetValue->generateSerializedSearchProductsRequest($request));
+            $this->assertEquals($expectedSerializedProductRequests[$i], $facetValue->generateSerializedProductsRequest($request));
             $this->assertEquals('?'.$expectedSerializedProductRequests[$i], $facetValue->generateQueryString($request));
             $i++;
         }
@@ -271,7 +271,7 @@ class FacetTest extends PHPUnit_Framework_TestCase
         $facet = new \Affilinet\ProductData\Responses\ResponseElements\Facet($data);
         $i = 0;
         foreach ($facet->getValues() as $facetValue) {
-            $this->assertEquals($expectedSerializedProductRequests[$i], $facetValue->generateSerializedSearchProductsRequest($request));
+            $this->assertEquals($expectedSerializedProductRequests[$i], $facetValue->generateSerializedProductsRequest($request));
             $this->assertEquals('?'.$expectedSerializedProductRequests[$i], $facetValue->generateQueryString($request));
             $i++;
         }
