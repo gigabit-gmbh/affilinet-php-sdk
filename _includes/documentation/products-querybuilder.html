@@ -8,7 +8,7 @@
 </div>
 
 
-<p> Incldue terms </p>
+<p> Include terms </p>
 {% highlight php  %}
 <?php
 $query = new \Affilinet\ProductData\Requests\Helper\Query();
@@ -22,6 +22,8 @@ $productsRequest
     ->send();
 
 {% endhighlight %}
+<br>
+<br>
 
 <p>Alternativly you can chain expressions</p>
 {% highlight php  %}
@@ -38,6 +40,8 @@ $productsRequest
     ->send();
 
 {% endhighlight %}
+<br>
+<br>
 
 
 
@@ -51,7 +55,8 @@ $query->where(
         ->exactly('apple')
 );
 {% endhighlight %}
-
+<br>
+<br>
 
 
 <p> Combine terms with OR </p>
@@ -65,7 +70,8 @@ $query->where(
         ->containsOneOf('apple', 'samsung')
 );
 {% endhighlight %}
-
+<br>
+<br>
 
 
 <p> Exclude terms </p>
@@ -79,7 +85,8 @@ $query->where(
 );
 
 {% endhighlight %}
-
+<br>
+<br>
 
 
 
@@ -106,7 +113,8 @@ $response = $productsRequest->send();
 
 {% endhighlight %}
 
-
+<br>
+<br>
 <p>
     Get all products containing "apple"  and "ipad"
 </p>
@@ -124,7 +132,8 @@ $query
 $productsRequest->query( $query);
 
 {% endhighlight %}
-
+<br>
+<br>
 
 
 
@@ -146,10 +155,11 @@ $query
     );
 
 {% endhighlight %}
+<br>
+<br>
 
 
-
-<p> Combine  OR with AND
+<p> Combine  OR with AND. The SQL would look </p>
 <pre>
     ( "t-mobile")
 
@@ -161,7 +171,7 @@ $query
 
     )
 </pre>
-</p>
+
 
 {% highlight php  %}
 <?php
@@ -179,3 +189,5 @@ $productsRequest->query($query
 );
 
 {% endhighlight %}
+<br>
+<br>
