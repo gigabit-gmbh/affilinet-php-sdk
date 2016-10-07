@@ -39,7 +39,7 @@ interface RequestInterface
     public function serialize();
 
     /**
-     * Generate SearchProductsRequest from URI query string
+     * Generate ProductsRequest from URI query string
      *
      * @param $serialized string
      * @return ProductsRequest

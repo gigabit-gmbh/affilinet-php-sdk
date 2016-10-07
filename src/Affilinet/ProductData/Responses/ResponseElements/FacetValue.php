@@ -115,7 +115,7 @@ class FacetValue implements FacetValueInterface
                     ->addDebug(
                         'You can not filter SearchProducts with '
                         . $this->getFacet()->getName()
-                        . ' Seems like you used this facet and tried to generate a Link or a SearchProductsRequest for this facets\' results.'
+                        . ' Seems like you used this facet and tried to generate a Link or a ProductsRequest for this facets\' results.'
                     );
 
                 break;

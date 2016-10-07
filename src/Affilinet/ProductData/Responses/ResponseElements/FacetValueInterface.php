@@ -42,7 +42,7 @@ interface FacetValueInterface
     public function generateSerializedProductsRequest(ProductsRequestInterface $request);
 
     /**
-     * Returns the serialized SearchProductsRequest to retrieve the results behind this facet value
+     * Returns the serialized ProductsRequest to retrieve the results behind this facet value
      * Starting with "?" for usage as URI Query Parameter
      *
      * @param  ProductsRequestInterface $request

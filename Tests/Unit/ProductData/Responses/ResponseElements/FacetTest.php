@@ -94,7 +94,7 @@ class FacetTest extends PHPUnit_Framework_TestCase
         }
     }
 
-    public function testGenerateSerializedSearchProductsRequestForFacets()
+    public function testGenerateSerializedProductsRequestForFacets()
     {
 
         $request = new \Affilinet\ProductData\Requests\ProductsRequest(new \Affilinet\ProductData\AffilinetClient(['publisher_id' => 'test', 'product_webservice_password' => 'test']));
@@ -124,7 +124,7 @@ class FacetTest extends PHPUnit_Framework_TestCase
 
     }
 
-    public function testGenerateSerializedSearchProductsRequestForFacetShopName()
+    public function testGenerateSerializedProductsRequestForFacetShopName()
     {
 
         $request = new \Affilinet\ProductData\Requests\ProductsRequest(new \Affilinet\ProductData\AffilinetClient(['publisher_id' => 'test', 'product_webservice_password' => 'test']));
@@ -154,7 +154,7 @@ class FacetTest extends PHPUnit_Framework_TestCase
 
     }
 
-    public function testGenerateSerializedSearchProductsRequestForFacetProgramId()
+    public function testGenerateSerializedProductsRequestForFacetProgramId()
     {
 
         $request = new \Affilinet\ProductData\Requests\ProductsRequest(new \Affilinet\ProductData\AffilinetClient(['publisher_id' => 'test', 'product_webservice_password' => 'test']));
@@ -184,7 +184,7 @@ class FacetTest extends PHPUnit_Framework_TestCase
 
     }
 
-    public function testGenerateSerializedSearchProductsRequestForFacetShopId()
+    public function testGenerateSerializedProductsRequestForFacetShopId()
     {
 
         $request = new \Affilinet\ProductData\Requests\ProductsRequest(new \Affilinet\ProductData\AffilinetClient(['publisher_id' => 'test', 'product_webservice_password' => 'test']));
@@ -214,7 +214,7 @@ class FacetTest extends PHPUnit_Framework_TestCase
 
     }
 
-    public function testGenerateSerializedSearchProductsRequestForFacetShopCategoryId()
+    public function testGenerateSerializedProductsRequestForFacetShopCategoryId()
     {
 
         $request = new \Affilinet\ProductData\Requests\ProductsRequest(new \Affilinet\ProductData\AffilinetClient(['publisher_id' => 'test', 'product_webservice_password' => 'test']));
@@ -246,7 +246,7 @@ class FacetTest extends PHPUnit_Framework_TestCase
 
     }
 
-    public function testGenerateSerializedSearchProductsRequestForFacetAffilinetCategoryId()
+    public function testGenerateSerializedProductsRequestForFacetAffilinetCategoryId()
     {
 
         $request = new \Affilinet\ProductData\Requests\ProductsRequest(new \Affilinet\ProductData\AffilinetClient(['publisher_id' => 'test', 'product_webservice_password' => 'test']));

@@ -145,7 +145,7 @@ class ProductsRequest extends AbstractRequest implements ProductsRequestInterfac
     public function excludeShopIds(array $shopIDs)
     {
         if (isset($this->queryParams['ShopIdMode']) && $this->queryParams['ShopIdMode'] === 'Include') {
-            throw  new AffilinetProductWebserviceException('excludeShopIds() can not be combined with onlyFromShopIds() in one SearchProductsRequest');
+            throw  new AffilinetProductWebserviceException('excludeShopIds() can not be combined with onlyFromShopIds() in one ProductsRequest');
         }
 
         $this->queryParams['ShopIds'] = $this->getShopIdCSV($shopIDs);
@@ -197,7 +197,7 @@ class ProductsRequest extends AbstractRequest implements ProductsRequestInterfac
     public function onlyFromShopIds(array  $shopIDs)
     {
         if (isset($this->queryParams['ShopIdMode']) && $this->queryParams['ShopIdMode'] === 'Exclude') {
-            throw  new AffilinetProductWebserviceException('onlyFromShopIds() can not be combined with excludeShopIds() in one SearchProductsRequest');
+            throw  new AffilinetProductWebserviceException('onlyFromShopIds() can not be combined with excludeShopIds() in one ProductsRequest');
         }
         $this->queryParams['ShopIds'] = $this->getShopIdCSV($shopIDs);
         $this->queryParams['ShopIdMode'] = 'Include';
@@ -390,7 +390,7 @@ class ProductsRequest extends AbstractRequest implements ProductsRequestInterfac
             $facetFields[] = $facetName;
 
             if (count($facetFields) > 4) {
-                throw new \OverflowException('You can only add up to 4 facets to one SearchProductsRequest');
+                throw new \OverflowException('You can only add up to 4 facets to one ProductsRequest');
             }
             $this->queryParams['FacetFields'] = implode(',', $facetFields);
         }

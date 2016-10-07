@@ -18,7 +18,7 @@ use Affilinet\ProductData\Responses\ResponseElements\Product;
 use Affilinet\ProductData\Responses\ResponseElements\ShopInterface;
 
 /**
- * Interface SearchProductsRequestInterface
+ * Interface ProductsRequestInterface
  */
 interface ProductsRequestInterface extends \Serializable, RequestInterface
 {
@@ -348,7 +348,7 @@ interface ProductsRequestInterface extends \Serializable, RequestInterface
     public function serialize();
 
     /**
-     * Generate SearchProductsRequest from URI query string
+     * Generate ProductsRequest from URI query string
      *
      * @param $serialized string
      * @return ProductsRequest
