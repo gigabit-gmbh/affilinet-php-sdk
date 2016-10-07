@@ -5,12 +5,12 @@ title: Product Response
 slug: productresponse
 # chapter sections, also used for building the sidebar navigation
 sections: 
-  - slug: meta
+  - slug: productresponse-meta
     title: Meta Data
-  - slug: facets
+  - slug: productresponse-facets
     title: Facets
-  - slug: products
-    title: Products
+  - slug: productresponse-product
+    title: Product Object
 # position, used for sorting the chapters
 position: 4 
 
