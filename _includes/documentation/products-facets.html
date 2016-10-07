@@ -17,7 +17,7 @@
 
 <div role="alert" class="alert alert-warning">
     <strong>Warning!</strong> <br>
-    You can only add up to <strong>4</strong> facets to each search request.
+    You can only add up to <strong>4</strong> facets to each Products Request.
 </div>
 
 <p><strong>Example</strong></p>
@@ -121,7 +121,7 @@ foreach ($productResponse->getFacets() as $facet) {
         // generate a new ProductsRequest for each facetValue
         $newProductsRequestString = $facetValue->generateSerializedProductsRequest($productsRequest);
 
-        // use the serialized Object to generate the ProductSearchRequest object
+        // use the serialized Object to generate the ProductsRequest object
         $newProductsRequest = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
         $newProductsRequest->unserialize($newProductsRequestString);
 
@@ -139,15 +139,15 @@ foreach ($productResponse->getFacets() as $facet) {
 <strong id="facet_result_page">Generate the resultpage for facet links</strong>
 <p>
     To actually display the results behind these links you will have to extract the information from the URL and
-    create a new ProductSearchRequest.
-    For testing purposes you can create a ProductSearchRequest directly from the query string
+    create a new ProductsRequest.
+    For testing purposes you can create a ProductsRequest directly from the query string
 
 </p>
 
 
 {% highlight php linenos %}
 <?php
-// create a Product Search Request Object
+// create a ProductsRequest Object
 $productsRequest = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
 
 $queryString = $_SERVER['QUERY_STRING']
