@@ -75,7 +75,7 @@ class SearchProductsIntegrationTest extends \PHPUnit_Framework_TestCase
         $this->assertException(
             $test,
             \Affilinet\ProductData\Exceptions\AffilinetProductWebserviceException::class,
-            0, 'The given ProductsRequest is not valid. - The given ProductsRequest is not valid. FilterQuery ‘invalidFilterQuery’ is not supported' );
+            0, 'The given SearchProductsRequest is not valid. - The given SearchProductsRequest is not valid. FilterQuery ‘invalidFilterQuery’ is not supported' );
     }
 
     public function testSendFindProductId()
