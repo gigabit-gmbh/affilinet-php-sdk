@@ -17,8 +17,6 @@ foreach( $products as $product) {
     /**
     * This is the ready-to-use string to display the price. E.g.
     * “For a limited time only 15.99 GBP plus shipping”.
-    *
-    * @return string
     */
     $product->getPriceInformation()->getDisplayPrice()
 }
@@ -28,7 +26,7 @@ foreach( $products as $product) {
 <br>
 <br>
 
-<p>A Product has a lot of attributes, most are self-explanatory. Have a look at the interface attached.
+<p>A Product has a lot of attributes, most are self-explanatory. Have a look at the interface below.
     There are just a few things to keep in mind:
     <br>
     <br>
@@ -40,7 +38,7 @@ foreach( $products as $product) {
     </div>
     <div class="well well-sm">
         Add the product to the users' cart by using <code>$product->getDeeplinkWithWithProductAddedToCart(true)</code>.
-        If no "add-to-cart"-deeplink is provided it will return the normal Deeplink as fallback.
+        If no "add-to-cart"-deeplink is provided it will return the normal deeplink as fallback.
     </div>
 
 </p>
@@ -221,7 +219,4 @@ interface ProductInterface
 
 
 {% endhighlight %}
-
-
-
 
