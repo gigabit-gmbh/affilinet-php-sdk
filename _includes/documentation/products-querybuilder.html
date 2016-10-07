@@ -8,7 +8,53 @@
 </div>
 
 
+<p> Incldue terms </p>
+{% highlight php  %}
+<?php
+$query = new \Affilinet\ProductData\Requests\Helper\Query();
+$query->where($query->expr()->containsAllOf('ipad', 'apple'));
+$productsRequest->query($query)->send();
+{% endhighlight %}
+
+<p>Alternativly you can chain expressions</p>
+{% highlight php  %}
+<?php
+$query = new \Affilinet\ProductData\Requests\Helper\Query();
+$query->where($query->expr()->contains('ipad')->contains('apple'));
+$productsRequest->query($query)->send();
+{% endhighlight %}
+
+
+
+<p> Exactly match a term </p>
+{% highlight php  %}
+<?php
+// will include apple but not applejuice
+$query->where($query->expr()->exactly('apple'));
+{% endhighlight %}
+
+
+
+<p> Combine terms with OR </p>
+{% highlight php  %}
+<?php
+// will include apple but not applejuice
+$query->where($query->expr()->containsOneOf('apple', 'samsung'));
+{% endhighlight %}
+
+
+
+<p> Exclude terms </p>
+{% highlight php  %}
+<?php
+$query->where($query->expr()->containsNot('ipad', 'apple'));
+{% endhighlight %}
+
+
+
+
 <p>
+    <strong>Examples</strong><br>
     Get all products containing "apple" but not containing "ipod", "iphone", "mac"
 </p>
 
@@ -49,16 +95,12 @@ $productsRequest->query( $query);
 {% endhighlight %}
 
 
-<p> Exclude terms </p>
-{% highlight php  %}
-<?php
-$query->where($query->expr()->containsNot('ipad', 'apple'));
-{% endhighlight %}
 
 
 
-
-<p> Combine with OR: Find (apple and "iphone") or (samsung and "galaxy") </p>
+<p>
+    <strong>Chain Query Expressions</strong> <br>
+    Combine with OR: Find (apple and "iphone") or (samsung and "galaxy") </p>
 {% highlight php  %}
 <?php
 
