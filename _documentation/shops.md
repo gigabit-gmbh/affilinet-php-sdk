@@ -1,10 +1,10 @@
 ---
 # chapter headline title
-title: License
+title: Search Shops
 # chapter url slug
-slug: license
+slug: shops
 # position, used for sorting the chapters
-position: 7 
+position: 5 
 
 ---
 

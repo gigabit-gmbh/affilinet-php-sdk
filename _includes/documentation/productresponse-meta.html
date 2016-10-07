@@ -1,0 +1,29 @@
+<p>
+    Get some general information about the response for pagination.
+
+</p>
+
+
+{% highlight php linenos %}
+<?php
+
+// number of total results
+$productResponse->totalRecords();
+
+// Number of pages (Pages are "1 based", there is no page with number 0)
+$productResponse->totalPages()
+
+// Number of results on this page
+$productResponse->pageSize()
+
+// number of currentPage (Pages are "1 based", there is no page with number 0)
+$productResponse->pageNumber()
+
+{% endhighlight %}
+
+
+
+
+
+
+

@@ -1,0 +1,56 @@
+<p>
+    Facets must explicitly be requested in your ProductsRequest.
+    <br>
+    <br>
+    $pr
+</p>
+
+
+{% highlight php linenos %}
+<?php
+
+// get the array of Facet objects
+$facets = $productResponse->getFacets();
+
+foreach( $facets as $facet) {
+
+    // each $facet a "Facet" object
+    $facet->getName();  // for example "ShopCategoryPathFacet"
+
+    foreach ($facet->getValues() as $facetValue) {
+        // $facetValue is a "FacetValue" Object
+
+        // to display always use getDisplayValue
+        $facetValue->getDisplayValue() // => "Shoes"
+
+        // the "real" value of this facet
+        $facetValue->getValue()  // => 987654^Shoes^12345>987654^Clothing>Shoes
+
+        // the number of results for "Adidas"
+        $facetValue->getResultCount(); // => 21
+
+        /**
+         * To get the results behind this facet value, generate a new ProductsRequest
+         * where $productsRequest is the original request of this page the correct filter will then be added to
+         * Can be used to generate a URL for the facet
+         **/
+        $facetValue->generateSerializedProductsRequest($productsRequest)
+
+        /**
+         * returns a new ProductsRequest serialized as a query string
+         * where $productsRequest is the original request of this page the correct filter will then be added to
+         * Can be used to generate a URL for the facet
+         **/
+        $facetValue->generateQueryString($productsRequest)
+
+    }
+}
+
+{% endhighlight %}
+
+
+
+
+
+
+
