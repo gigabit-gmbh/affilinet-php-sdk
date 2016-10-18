@@ -42,18 +42,18 @@ trait ShopLogoTrait
     private function addLogoScale($scale)
     {
         if (!isset(
-            $this->queryParams['LogoScales']
+            $this->queryParams['LogoScale']
         )
         ) {
             $scales = [];
         } else {
-            $scales = explode(',', $this->queryParams['LogoScales']);
+            $scales = explode(',', $this->queryParams['LogoScale']);
         }
         if (!in_array($scale, $scales)) {
             $scales[] = $scale;
         }
 
-        $this->queryParams['LogoScales'] = implode(',', $scales);
+        $this->queryParams['LogoScale'] = implode(',', $scales);
 
         return $this;
     }
