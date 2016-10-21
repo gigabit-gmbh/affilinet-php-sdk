@@ -31,7 +31,6 @@ $productsRequest->addRawQuery( 'tshirt');
 // add the band facet and show a maximum of 15 different brands
 $productsRequest->addFacetBrand(15);
 
-
 // will return a ProductsResponse Object
 $productsResponse = $productsRequest->send();
 
@@ -96,13 +95,13 @@ foreach ($productsResponse->products() as $product) {
 <?php
 
 foreach ($productResponse->getFacets() as $facet) {
-echo $facet->getName();
+    echo $facet->getName();
 
-foreach ($facet->getValues() as $facetValue) {
-    // generate a query string and attach it to your URL
-    $url = '/' . $facetValue->generateQueryString($productsRequest);
+    foreach ($facet->getValues() as $facetValue) {
+        // generate a query string and attach it to your URL
+        $url = '/' . $facetValue->generateQueryString($productsRequest);
 
-    echo "<a href='$url'> ". $facetValue->getDisplayValue() . '</a><br>';
+        echo "<a href='$url'> ". $facetValue->getDisplayValue() . '</a><br>';
     }
 }
 
