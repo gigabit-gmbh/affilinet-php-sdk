@@ -1,5 +1,5 @@
 /*!
- * Custom JS for affilinet Advertiser Mobile SDK
+ * Custom CSS for affilinet ProductData PHP SDK
 */
 
 // Highlight the top nav as scrolling occurs
