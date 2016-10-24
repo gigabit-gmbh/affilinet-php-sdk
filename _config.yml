@@ -20,6 +20,8 @@ mainmenu:
     slug: 
   - title: Documentation
     slug: documentation
+  - title: Code Reference
+    slug: reference
   - title: Download 
     slug: download
 
