@@ -16,7 +16,6 @@ composer require affilinet/productdata-php-sdk
 ## Examples
 
 ```php
-$affilinet
 $config = [
     'publisher_id' => {PUBLISHER ID},
     'product_webservice_password' => {PRODUCT WEBSERVICE PASSWORD}
@@ -25,7 +24,6 @@ $config = [
 $affilinet = new \Affilinet\ProductData\AffilinetClient($config);
 
 // simple search for t-shirts (using the product webservice)
-
 try {
     $search = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
     $query = new \Affilinet\ProductData\Requests\Helper\Query();
