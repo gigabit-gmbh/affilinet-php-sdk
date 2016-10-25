@@ -48,19 +48,18 @@ foreach ($categoriesResponse->getCategories() as $category) {
 
 {% endhighlight %}
 <br>
-<div role="alert" class="alert alert-info">
+
+<div class="well well-sm">
     <strong>Use a shop category to filter a Product Request</strong>
-
-    <ul>
-        <li>
-            Use <code>$category->getNamePath()</code> to filter a Product Request <code>$productRequest->addFilterQuery('ShopCategoryPath', $category->getNamePath() )</code>
-        </li>
-        <li>
-            Use <code>$category->getId()</code> to filter a Product Request <code>$productRequest->addFilterQuery('ShopCategoryId', $category->getId() )</code>
-        </li>
-    </ul>
-
+    <br>
+    <code>$productRequest->addFilterQuery('ShopCategoryPath', $category->getNamePath() )</code>
+    <br>
+    or
+    <br>
+    <code>$productRequest->addFilterQuery('ShopCategoryId', $category->getId() )</code>
 </div>
+
+
 
 <br>
 <p>
@@ -85,18 +84,16 @@ $categoriesResponse = $categoriesRequest->send();
 
 <br>
 
-<div role="alert" class="alert alert-info">
-    <strong>Use a affilinet category to filter a Product Request</strong>
+<div class="well well-sm">
+    <strong>You can use a affilinet category to filter a Product Request</strong><br>
+    <code>$productRequest->addFilterQuery('AffilinetCategoryPath', $affilinetCategory->getNamePath() )</code>
 
-    <ul>
-        <li>
-            Use <code>$affilinetCategory->getNamePath()</code> to filter a Product Request <code>$productRequest->addFilterQuery('AffilinetCategoryPath', $affilinetCategory->getNamePath() )</code>
-        </li>
-        <li>
-            Use <code>$affilinetCategory->getId()</code> to filter a Product Request <code>$productRequest->addFilterQuery('AffilinetCategoryId', $affilinetCategory->getId() )</code>
-        </li>
-    </ul>
-
+    <br>
+    or
+    <br>
+    <code>$productRequest->addFilterQuery('AffilinetCategoryId', $affilinetCategory->getId() )</code>
 </div>
+
+
 
 
