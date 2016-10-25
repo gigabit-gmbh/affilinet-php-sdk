@@ -49,7 +49,7 @@ interface ShopPropertiesResponseInterface extends ResponseInterface
     public function getProperty($propertyName);
 
     /**
-     * @return array
+     * @return ShopPropertyInterface[]
      */
     public function getProperties();
 

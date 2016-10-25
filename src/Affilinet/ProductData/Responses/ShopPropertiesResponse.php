@@ -88,7 +88,7 @@ class ShopPropertiesResponse extends AbstractResponse implements ShopPropertiesR
     }
 
     /**
-     * @return ShopPropertyInterface[];
+     * @return ShopPropertyInterface[]
      */
     public function getProperties()
     {
