@@ -18,22 +18,21 @@ interface QueryInterface
     public function getQuery();
 
     /**
-     * @param  Expression $expression
+     * @param  Expression     $expression
      * @return QueryInterface
      */
     public function where(Expression $expression);
 
     /**
-     * @param  Expression $expression
+     * @param  Expression     $expression
      * @return QueryInterface
      */
     public function andWhere(Expression $expression);
 
     /**
-     * @param  Expression $expression
+     * @param  Expression     $expression
      * @return QueryInterface
      */
     public function orWhere(Expression $expression);
-
 
 }

@@ -14,7 +14,6 @@ use Affilinet\ProductData\Responses\ResponseElements\Facet;
 use Affilinet\ProductData\Responses\ResponseElements\Product;
 use Psr\Http\Message\ResponseInterface as PsrResponse;
 
-
 /**
  * Class ProductsResponse
  */

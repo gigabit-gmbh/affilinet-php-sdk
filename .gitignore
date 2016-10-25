@@ -1,3 +1,4 @@
 vendor/
 composer.lock
 Tests/AffilinetTestCredentials.php
+_site

@@ -41,7 +41,7 @@ class Query implements QueryInterface
     }
 
     /**
-     * @param  Expression $expression
+     * @param  Expression     $expression
      * @return QueryInterface
      */
     public function where(Expression $expression, $operator = 'AND')
@@ -55,7 +55,7 @@ class Query implements QueryInterface
     }
 
     /**
-     * @param  Expression $expression
+     * @param  Expression     $expression
      * @return QueryInterface
      */
     public function andWhere(Expression $expression)
@@ -65,19 +65,18 @@ class Query implements QueryInterface
     }
 
     /**
-     * @param  Expression $expression
+     * @param  Expression     $expression
      * @return QueryInterface
      */
     public function orWhere(Expression $expression)
     {
-
         return $this->where($expression, 'OR');
 
     }
 
-    public function expr(){
+    public function expr()
+    {
         return new Expression();
     }
-
 
 }

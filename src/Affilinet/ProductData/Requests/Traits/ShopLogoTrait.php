@@ -11,10 +11,7 @@ namespace Affilinet\ProductData\Requests\Traits;
 
 trait ShopLogoTrait
 {
-
-
-
-    /**
+        /**
      * @param $scale
      * @return $this
      */
@@ -28,7 +25,6 @@ trait ShopLogoTrait
         return $this;
     }
 
-
     /**
      * @return $this
      */
@@ -38,7 +34,6 @@ trait ShopLogoTrait
 
         return $this;
     }
-
 
     /**
      * @return $this

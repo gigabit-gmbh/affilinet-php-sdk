@@ -9,7 +9,6 @@
 
 namespace Affilinet\ProductData\Requests\Helper;
 
-
 class Expression implements ExpressionInterface
 {
     public function __construct()
@@ -28,7 +27,6 @@ class Expression implements ExpressionInterface
      */
     public function exactly($keyword)
     {
-
         return $this->combineLiterals(['"'. $keyword . '"'], 'AND');
     }
 
@@ -43,7 +41,7 @@ class Expression implements ExpressionInterface
 
     /**
      *
-     * @param  string         $keyword
+     * @param  string     $keyword
      * @return Expression
      */
     public function contains($keyword)
@@ -52,7 +50,7 @@ class Expression implements ExpressionInterface
     }
 
     /**
-     * @param  array          $keywords
+     * @param  array      $keywords
      * @return Expression
      */
     public function containsAllOf(...$keywords)
@@ -62,13 +60,12 @@ class Expression implements ExpressionInterface
     }
 
     /**
-     * @param  array          $keywords
+     * @param  array      $keywords
      * @return Expression
      */
     public function containsNot(...$keywords)
     {
         return  $this->combineLiterals($keywords, 'NOT');
-
 
     }
 
@@ -84,6 +81,7 @@ class Expression implements ExpressionInterface
             switch ($operator) {
                 case 'NOT':
                     $this->expression .= ' NOT "' . $keywords[0] . '" ';
+
                     return $this;
             }
         }
@@ -100,7 +98,6 @@ class Expression implements ExpressionInterface
             $string .= ' (';
         }
 
-
         $i = 0;
         foreach ($keywords as $keyword) {
             $i++;
@@ -115,10 +112,7 @@ class Expression implements ExpressionInterface
             $string .= ')';
         }
 
-
         $this->expression  .= $string;
-
-
 
         return $this;
     }
@@ -126,7 +120,8 @@ class Expression implements ExpressionInterface
     /**
      * @return string
      */
-    public function getExpression() {
+    public function getExpression()
+    {
         return $this->expression;
     }
 

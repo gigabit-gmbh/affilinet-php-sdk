@@ -8,7 +8,6 @@
 
 namespace Affilinet\ProductData\Requests\Helper;
 
-
 interface ExpressionInterface
 {
 
@@ -26,19 +25,19 @@ interface ExpressionInterface
 
     /**
      *
-     * @param  string         $keyword
+     * @param  string     $keyword
      * @return Expression
      */
     public function contains($keyword);
 
     /**
-     * @param  array          $keywords
+     * @param  array      $keywords
      * @return Expression
      */
     public function containsAllOf(...$keywords);
 
     /**
-     * @param  array          $keywords
+     * @param  array      $keywords
      * @return Expression
      */
     public function containsNot(...$keywords);
