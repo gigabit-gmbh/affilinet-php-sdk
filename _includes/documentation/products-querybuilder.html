@@ -147,7 +147,7 @@ $response = $productsRequest->query($query)->send();
 
 
 <div class="well well-sm">
-    For better code legibility both methods <pre>where()</pre> and <pre>andWhere()</pre> can be used. They provide the same functionality.</a>.
+    For better code legibility both methods <code>where()</code> and <code>andWhere()</code> can be used. They provide the same functionality.</a>.
 </div>
 
 <p>Chaining with AND</p>
@@ -232,8 +232,8 @@ $response = $productsRequest->query($query)->send();
 <p>
     <strong>Limitations</strong>
     <br>
-It is <strong>not possible to nest where statements</strong>: "No <pre>where()</pre> inside of <pre>where()</pre> methods.
-They only accept expression statements "<pre>expr()</pre>".
+It is <strong>not possible to nest where statements</strong>: "No <code>where()</code> inside of <code>where()</code> methods.
+They only accept expression statements "<code>expr()</code>".
 </p>
 
 {% highlight php  %}
@@ -259,7 +259,7 @@ $query->where(
 <br>
 
 <p>
-It is not possible to chain expressions inside a <pre>where()</pre> with OR.
+It is not possible to chain expressions inside a <code>where()</code> with OR.
 </p>
 {% highlight php  %}
 <?php
