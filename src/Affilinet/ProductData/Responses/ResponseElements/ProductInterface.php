@@ -99,13 +99,13 @@ interface ProductInterface
     /**
      * @return boolean
      */
-    public function hasDeeplinkWithProductAddedToCart();
+    public function hasAlternativeDeeplink();
 
     /**
      * @param $useDeeplinkAsFallback
      * @return mixed
      */
-    public function getDeeplinkWithWithProductAddedToCart($useDeeplinkAsFallback = false);
+    public function getAlternativeDeeplink($useDeeplinkAsFallback = false);
 
     /**
      * @return string

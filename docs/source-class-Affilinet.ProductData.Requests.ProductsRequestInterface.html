@@ -83,6 +83,7 @@
 				<li><a href="class-Affilinet.ProductData.HttpClient.GuzzleClient.html">Affilinet\ProductData\HttpClient\GuzzleClient</a></li>
 				<li><a href="class-Affilinet.ProductData.Requests.AbstractRequest.html">Affilinet\ProductData\Requests\AbstractRequest</a></li>
 				<li><a href="class-Affilinet.ProductData.Requests.CategoriesRequest.html">Affilinet\ProductData\Requests\CategoriesRequest</a></li>
+				<li><a href="class-Affilinet.ProductData.Requests.Helper.Expression.html">Affilinet\ProductData\Requests\Helper\Expression</a></li>
 				<li><a href="class-Affilinet.ProductData.Requests.Helper.Query.html">Affilinet\ProductData\Requests\Helper\Query</a></li>
 				<li><a href="class-Affilinet.ProductData.Requests.ProductsRequest.html">Affilinet\ProductData\Requests\ProductsRequest</a></li>
 				<li><a href="class-Affilinet.ProductData.Requests.ShopPropertiesRequest.html">Affilinet\ProductData\Requests\ShopPropertiesRequest</a></li>
@@ -106,6 +107,7 @@
 			<ul>
 				<li><a href="class-Affilinet.ProductData.HttpClient.HttpClientInterface.html">Affilinet\ProductData\HttpClient\HttpClientInterface</a></li>
 				<li><a href="class-Affilinet.ProductData.Requests.CategoriesRequestInterface.html">Affilinet\ProductData\Requests\CategoriesRequestInterface</a></li>
+				<li><a href="class-Affilinet.ProductData.Requests.Helper.ExpressionInterface.html">Affilinet\ProductData\Requests\Helper\ExpressionInterface</a></li>
 				<li><a href="class-Affilinet.ProductData.Requests.Helper.QueryInterface.html">Affilinet\ProductData\Requests\Helper\QueryInterface</a></li>
 				<li><a href="class-Affilinet.ProductData.Requests.ProductsRequestInterface.html">Affilinet\ProductData\Requests\ProductsRequestInterface</a></li>
 				<li><a href="class-Affilinet.ProductData.Requests.RequestInterface.html">Affilinet\ProductData\Requests\RequestInterface</a></li>
@@ -192,9 +194,9 @@
 </span><span id="18" class="l"><span class="php-keyword1">use</span> Affilinet\ProductData\Responses\ResponseElements\ShopInterface;
 </span><span id="19" class="l">
 </span><span id="20" class="l"><span class="php-comment">/**
-</span></span><span id="21" class="l"><span class="php-comment"> * Interface SearchProductsRequestInterface
+</span></span><span id="21" class="l"><span class="php-comment"> * Interface ProductsRequestInterface
 </span></span><span id="22" class="l"><span class="php-comment"> */</span>
-</span><span id="23" class="l"><span class="php-keyword1">interface</span> ProductsRequestInterface <span class="php-keyword1">extends</span> \Serializable
+</span><span id="23" class="l"><span class="php-keyword1">interface</span> ProductsRequestInterface <span class="php-keyword1">extends</span> \Serializable, RequestInterface
 </span><span id="24" class="l">{
 </span><span id="25" class="l">
 </span><span id="26" class="l">    <span class="php-keyword1">const</span> DEFAULT_FACET_VALUE_LIMIT = <span class="php-num">20</span>;
@@ -252,7 +254,7 @@
 </span><span id="78" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> onlyFromCategories(<span class="php-keyword1">array</span> <span class="php-var">$categoryIds</span>, <span class="php-var">$excludeSubCategories</span> = <span class="php-keyword1">false</span>, <span class="php-var">$useAffilinetCategories</span> = <span class="php-keyword1">true</span>);
 </span><span id="79" class="l">
 </span><span id="80" class="l">    <span class="php-comment">/**
-</span></span><span id="81" class="l"><span class="php-comment">     * @param  ShopInterface                  $shop
+</span></span><span id="81" class="l"><span class="php-comment">     * @param  ShopInterface                       $shop
 </span></span><span id="82" class="l"><span class="php-comment">     * @return $this
 </span></span><span id="83" class="l"><span class="php-comment">     * @throws AffilinetProductWebserviceException
 </span></span><span id="84" class="l"><span class="php-comment">     */</span>
@@ -412,7 +414,7 @@
 </span></span><span id="238" class="l"><span class="php-comment">     * Add facet articleNumber
 </span></span><span id="239" class="l"><span class="php-comment">     * A maximum of four facets can be added to the result
 </span></span><span id="240" class="l"><span class="php-comment">     *
-</span></span><span id="241" class="l"><span class="php-comment">     * @param int $facetValueLimit
+</span></span><span id="241" class="l"><span class="php-comment">     * @param  int             $facetValueLimit
 </span></span><span id="242" class="l"><span class="php-comment">     * @return ProductsRequest
 </span></span><span id="243" class="l"><span class="php-comment">     */</span>
 </span><span id="244" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> addFacetArticleNumber(<span class="php-var">$facetValueLimit</span> = self::DEFAULT_FACET_VALUE_LIMIT);
@@ -420,7 +422,7 @@
 </span><span id="246" class="l">    <span class="php-comment">/**
 </span></span><span id="247" class="l"><span class="php-comment">     * Add facet brand
 </span></span><span id="248" class="l"><span class="php-comment">     * A maximum of four facets can be added to the result
-</span></span><span id="249" class="l"><span class="php-comment">     * @param int $facetValueLimit
+</span></span><span id="249" class="l"><span class="php-comment">     * @param  int             $facetValueLimit
 </span></span><span id="250" class="l"><span class="php-comment">     * @return ProductsRequest
 </span></span><span id="251" class="l"><span class="php-comment">     */</span>
 </span><span id="252" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> addFacetBrand(<span class="php-var">$facetValueLimit</span> = self::DEFAULT_FACET_VALUE_LIMIT);
@@ -429,7 +431,7 @@
 </span></span><span id="255" class="l"><span class="php-comment">     * Add facet distributor
 </span></span><span id="256" class="l"><span class="php-comment">     * A maximum of four facets can be added to the result
 </span></span><span id="257" class="l"><span class="php-comment">     *
-</span></span><span id="258" class="l"><span class="php-comment">     * @param int $facetValueLimit
+</span></span><span id="258" class="l"><span class="php-comment">     * @param  int             $facetValueLimit
 </span></span><span id="259" class="l"><span class="php-comment">     * @return ProductsRequest
 </span></span><span id="260" class="l"><span class="php-comment">     */</span>
 </span><span id="261" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> addFacetDistributor(<span class="php-var">$facetValueLimit</span> = self::DEFAULT_FACET_VALUE_LIMIT);
@@ -438,7 +440,7 @@
 </span></span><span id="264" class="l"><span class="php-comment">     * Add facet EAN (European Article Number)
 </span></span><span id="265" class="l"><span class="php-comment">     * A maximum of four facets can be added to the result
 </span></span><span id="266" class="l"><span class="php-comment">     *
-</span></span><span id="267" class="l"><span class="php-comment">     * @param int $facetValueLimit
+</span></span><span id="267" class="l"><span class="php-comment">     * @param  int             $facetValueLimit
 </span></span><span id="268" class="l"><span class="php-comment">     * @return ProductsRequest
 </span></span><span id="269" class="l"><span class="php-comment">     */</span>
 </span><span id="270" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> addFacetEAN(<span class="php-var">$facetValueLimit</span> = self::DEFAULT_FACET_VALUE_LIMIT);
@@ -447,7 +449,7 @@
 </span></span><span id="273" class="l"><span class="php-comment">     * Add facet manufacturer
 </span></span><span id="274" class="l"><span class="php-comment">     * A maximum of four facets can be added to the result
 </span></span><span id="275" class="l"><span class="php-comment">     *
-</span></span><span id="276" class="l"><span class="php-comment">     * @param int $facetValueLimit
+</span></span><span id="276" class="l"><span class="php-comment">     * @param  int             $facetValueLimit
 </span></span><span id="277" class="l"><span class="php-comment">     * @return ProductsRequest
 </span></span><span id="278" class="l"><span class="php-comment">     */</span>
 </span><span id="279" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> addFacetManufacturer(<span class="php-var">$facetValueLimit</span> = self::DEFAULT_FACET_VALUE_LIMIT);
@@ -456,7 +458,7 @@
 </span></span><span id="282" class="l"><span class="php-comment">     * Add facet programId
 </span></span><span id="283" class="l"><span class="php-comment">     * A maximum of four facets can be added to the result
 </span></span><span id="284" class="l"><span class="php-comment">     *
-</span></span><span id="285" class="l"><span class="php-comment">     * @param int $facetValueLimit
+</span></span><span id="285" class="l"><span class="php-comment">     * @param  int             $facetValueLimit
 </span></span><span id="286" class="l"><span class="php-comment">     * @return ProductsRequest
 </span></span><span id="287" class="l"><span class="php-comment">     */</span>
 </span><span id="288" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> addFacetProgramId(<span class="php-var">$facetValueLimit</span> = self::DEFAULT_FACET_VALUE_LIMIT);
@@ -465,7 +467,7 @@
 </span></span><span id="291" class="l"><span class="php-comment">     * Add facet with shop IDs
 </span></span><span id="292" class="l"><span class="php-comment">     * A maximum of four facets can be added to the result
 </span></span><span id="293" class="l"><span class="php-comment">     *
-</span></span><span id="294" class="l"><span class="php-comment">     * @param int $facetValueLimit
+</span></span><span id="294" class="l"><span class="php-comment">     * @param  int             $facetValueLimit
 </span></span><span id="295" class="l"><span class="php-comment">     * @return ProductsRequest
 </span></span><span id="296" class="l"><span class="php-comment">     */</span>
 </span><span id="297" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> addFacetShopId(<span class="php-var">$facetValueLimit</span> = self::DEFAULT_FACET_VALUE_LIMIT);
@@ -474,7 +476,7 @@
 </span></span><span id="300" class="l"><span class="php-comment">     * Add facet with Shop Names
 </span></span><span id="301" class="l"><span class="php-comment">     * A maximum of four facets can be added to the result
 </span></span><span id="302" class="l"><span class="php-comment">     *
-</span></span><span id="303" class="l"><span class="php-comment">     * @param int $facetValueLimit
+</span></span><span id="303" class="l"><span class="php-comment">     * @param  int             $facetValueLimit
 </span></span><span id="304" class="l"><span class="php-comment">     * @return ProductsRequest
 </span></span><span id="305" class="l"><span class="php-comment">     */</span>
 </span><span id="306" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> addFacetShopName(<span class="php-var">$facetValueLimit</span> = self::DEFAULT_FACET_VALUE_LIMIT);
@@ -483,7 +485,7 @@
 </span></span><span id="309" class="l"><span class="php-comment">     * Add facet with Affilinet Category IDs
 </span></span><span id="310" class="l"><span class="php-comment">     * A maximum of four facets can be added to the result
 </span></span><span id="311" class="l"><span class="php-comment">     *
-</span></span><span id="312" class="l"><span class="php-comment">     * @param int $facetValueLimit
+</span></span><span id="312" class="l"><span class="php-comment">     * @param  int             $facetValueLimit
 </span></span><span id="313" class="l"><span class="php-comment">     * @return ProductsRequest
 </span></span><span id="314" class="l"><span class="php-comment">     */</span>
 </span><span id="315" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> addFacetAffilinetCategoryId(<span class="php-var">$facetValueLimit</span> = self::DEFAULT_FACET_VALUE_LIMIT);
@@ -492,7 +494,7 @@
 </span></span><span id="318" class="l"><span class="php-comment">     * Add facet with Affilinet Category Path
 </span></span><span id="319" class="l"><span class="php-comment">     * A maximum of four facets can be added to the result
 </span></span><span id="320" class="l"><span class="php-comment">     *
-</span></span><span id="321" class="l"><span class="php-comment">     * @param int $facetValueLimit
+</span></span><span id="321" class="l"><span class="php-comment">     * @param  int             $facetValueLimit
 </span></span><span id="322" class="l"><span class="php-comment">     * @return ProductsRequest
 </span></span><span id="323" class="l"><span class="php-comment">     */</span>
 </span><span id="324" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> addFacetAffilinetCategoryPath(<span class="php-var">$facetValueLimit</span> = self::DEFAULT_FACET_VALUE_LIMIT);
@@ -501,7 +503,7 @@
 </span></span><span id="327" class="l"><span class="php-comment">     * Add facet with Shop Category IDs
 </span></span><span id="328" class="l"><span class="php-comment">     * A maximum of four facets can be added to the result
 </span></span><span id="329" class="l"><span class="php-comment">     *
-</span></span><span id="330" class="l"><span class="php-comment">     * @param int $facetValueLimit
+</span></span><span id="330" class="l"><span class="php-comment">     * @param  int             $facetValueLimit
 </span></span><span id="331" class="l"><span class="php-comment">     * @return ProductsRequest
 </span></span><span id="332" class="l"><span class="php-comment">     */</span>
 </span><span id="333" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> addFacetShopCategoryId(<span class="php-var">$facetValueLimit</span> = self::DEFAULT_FACET_VALUE_LIMIT);
@@ -510,7 +512,7 @@
 </span></span><span id="336" class="l"><span class="php-comment">     * Add facet with Shop Category Paths
 </span></span><span id="337" class="l"><span class="php-comment">     * A maximum of four facets can be added to the result
 </span></span><span id="338" class="l"><span class="php-comment">     *
-</span></span><span id="339" class="l"><span class="php-comment">     * @param int $facetValueLimit
+</span></span><span id="339" class="l"><span class="php-comment">     * @param  int             $facetValueLimit
 </span></span><span id="340" class="l"><span class="php-comment">     * @return ProductsRequest
 </span></span><span id="341" class="l"><span class="php-comment">     */</span>
 </span><span id="342" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> addFacetShopCategoryPath(<span class="php-var">$facetValueLimit</span> = self::DEFAULT_FACET_VALUE_LIMIT);
@@ -522,7 +524,7 @@
 </span><span id="348" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <span class="php-keyword2">serialize</span>();
 </span><span id="349" class="l">
 </span><span id="350" class="l">    <span class="php-comment">/**
-</span></span><span id="351" class="l"><span class="php-comment">     * Generate SearchProductsRequest from URI query string
+</span></span><span id="351" class="l"><span class="php-comment">     * Generate ProductsRequest from URI query string
 </span></span><span id="352" class="l"><span class="php-comment">     *
 </span></span><span id="353" class="l"><span class="php-comment">     * @param $serialized string
 </span></span><span id="354" class="l"><span class="php-comment">     * @return ProductsRequest
@@ -555,7 +557,7 @@
 	</div>
 </div>
 </div>
-<script src="resources/combined.js?8bb5e6806d116b2e9c054da8efc852cee2251840"></script>
-<script src="elementlist.js?f871e97699dd2d4a82eb10a4e63254d476bfc1d6"></script>
+<script src="resources/combined.js?942bfd8dc01177ceb36c45d34960b3ca1b9a2877"></script>
+<script src="elementlist.js?73b685a9591254d9ccc3a328fa83c343ba5a617c"></script>
 </body>
 </html>

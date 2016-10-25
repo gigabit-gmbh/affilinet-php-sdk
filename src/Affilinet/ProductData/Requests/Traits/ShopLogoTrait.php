@@ -12,18 +12,22 @@ namespace Affilinet\ProductData\Requests\Traits;
 trait ShopLogoTrait
 {
 
+
+
     /**
+     * @param $scale
      * @return $this
      */
-    public function addAllShopLogos()
+    private function addLogoScale($scale)
     {
-        $this->addShopLogoWithSize50px()
-            ->addShopLogoWithSize90px()
-            ->addShopLogoWithSize150px()
-            ->addShopLogoWithSize468px();
+        if (isset( $this->queryParams['LogoScale'] ) ) {
+            $this->affilinetClient->getLog()->warning('You can only add one LogoScale to a ShopsRequestObject. ');
+        }
+        $this->queryParams['LogoScale'] = $scale;
 
         return $this;
     }
+
 
     /**
      * @return $this
@@ -35,28 +39,6 @@ trait ShopLogoTrait
         return $this;
     }
 
-    /**
-     * @param $scale
-     * @return $this
-     */
-    private function addLogoScale($scale)
-    {
-        if (!isset(
-            $this->queryParams['LogoScales']
-        )
-        ) {
-            $scales = [];
-        } else {
-            $scales = explode(',', $this->queryParams['LogoScales']);
-        }
-        if (!in_array($scale, $scales)) {
-            $scales[] = $scale;
-        }
-
-        $this->queryParams['LogoScales'] = implode(',', $scales);
-
-        return $this;
-    }
 
     /**
      * @return $this

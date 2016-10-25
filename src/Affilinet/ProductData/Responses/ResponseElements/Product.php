@@ -382,9 +382,9 @@ class Product implements ProductInterface
      * @param $useDeeplinkAsFallback
      * @return string|null
      */
-    public function getDeeplinkWithWithProductAddedToCart($useDeeplinkAsFallback = false)
+    public function getAlternativeDeeplink($useDeeplinkAsFallback = false)
     {
-        if ($this->hasDeeplinkWithProductAddedToCart()) {
+        if ($this->hasAlternativeDeeplink()) {
             return $this->deeplink2;
         }
         if ($useDeeplinkAsFallback === true) {
@@ -397,7 +397,7 @@ class Product implements ProductInterface
     /**
      * @return boolean
      */
-    public function hasDeeplinkWithProductAddedToCart()
+    public function hasAlternativeDeeplink()
     {
         return isset($this->deeplink2);
     }

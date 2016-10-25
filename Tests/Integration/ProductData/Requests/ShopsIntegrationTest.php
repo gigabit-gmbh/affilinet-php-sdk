@@ -75,6 +75,29 @@ class ShopsIntegrationTest extends \PHPUnit_Framework_TestCase
         /** @noinspection PhpUndefinedMethodInspection */
         $this->assertEquals($response->jsonSerialize(), $response->toArray());
     }
+
+
+    public function testShopLogo()
+    {
+        $this->setUp();
+        $search = new \Affilinet\ProductData\Requests\ShopsRequest($this->affilinetClient);
+        $search->onlyShopsMatchingKeyword('maxdome');
+        $search->addShopLogoWithSize50px();
+        $response = $search->send();
+
+        $this->assertInstanceOf(\Affilinet\ProductData\Responses\ShopsResponse::class,$search->send());
+        /** @noinspection PhpUndefinedMethodInspection */
+        /** @noinspection PhpUndefinedMethodInspection */
+        foreach ($response->getShops() as $shop ){
+
+            foreach ($shop->getLogo() as $image) {
+                $this->assertEquals('Logo50', $image->getScaleName());
+            };
+        }
+        $this->assertEquals($response->jsonSerialize(), $response->toArray());
+    }
+
+
     public function testOnlyShopsUpdatedAfter()
     {
         $this->setUp();

@@ -83,6 +83,7 @@
 				<li><a href="class-Affilinet.ProductData.HttpClient.GuzzleClient.html">Affilinet\ProductData\HttpClient\GuzzleClient</a></li>
 				<li><a href="class-Affilinet.ProductData.Requests.AbstractRequest.html">Affilinet\ProductData\Requests\AbstractRequest</a></li>
 				<li><a href="class-Affilinet.ProductData.Requests.CategoriesRequest.html">Affilinet\ProductData\Requests\CategoriesRequest</a></li>
+				<li><a href="class-Affilinet.ProductData.Requests.Helper.Expression.html">Affilinet\ProductData\Requests\Helper\Expression</a></li>
 				<li><a href="class-Affilinet.ProductData.Requests.Helper.Query.html">Affilinet\ProductData\Requests\Helper\Query</a></li>
 				<li><a href="class-Affilinet.ProductData.Requests.ProductsRequest.html">Affilinet\ProductData\Requests\ProductsRequest</a></li>
 				<li><a href="class-Affilinet.ProductData.Requests.ShopPropertiesRequest.html">Affilinet\ProductData\Requests\ShopPropertiesRequest</a></li>
@@ -106,6 +107,7 @@
 			<ul>
 				<li><a href="class-Affilinet.ProductData.HttpClient.HttpClientInterface.html">Affilinet\ProductData\HttpClient\HttpClientInterface</a></li>
 				<li><a href="class-Affilinet.ProductData.Requests.CategoriesRequestInterface.html">Affilinet\ProductData\Requests\CategoriesRequestInterface</a></li>
+				<li><a href="class-Affilinet.ProductData.Requests.Helper.ExpressionInterface.html">Affilinet\ProductData\Requests\Helper\ExpressionInterface</a></li>
 				<li><a href="class-Affilinet.ProductData.Requests.Helper.QueryInterface.html">Affilinet\ProductData\Requests\Helper\QueryInterface</a></li>
 				<li><a href="class-Affilinet.ProductData.Requests.ProductsRequestInterface.html">Affilinet\ProductData\Requests\ProductsRequestInterface</a></li>
 				<li><a href="class-Affilinet.ProductData.Requests.RequestInterface.html">Affilinet\ProductData\Requests\RequestInterface</a></li>
@@ -556,9 +558,9 @@
 </span></span><span id="382" class="l"><span class="php-comment">     * @param $useDeeplinkAsFallback
 </span></span><span id="383" class="l"><span class="php-comment">     * @return string|null
 </span></span><span id="384" class="l"><span class="php-comment">     */</span>
-</span><span id="385" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> getDeeplinkWithWithProductAddedToCart(<span class="php-var">$useDeeplinkAsFallback</span> = <span class="php-keyword1">false</span>)
+</span><span id="385" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> getAlternativeDeeplink(<span class="php-var">$useDeeplinkAsFallback</span> = <span class="php-keyword1">false</span>)
 </span><span id="386" class="l">    {
-</span><span id="387" class="l">        <span class="php-keyword1">if</span> (<span class="php-var">$this</span>-&gt;hasDeeplinkWithProductAddedToCart()) {
+</span><span id="387" class="l">        <span class="php-keyword1">if</span> (<span class="php-var">$this</span>-&gt;hasAlternativeDeeplink()) {
 </span><span id="388" class="l">            <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;deeplink2;
 </span><span id="389" class="l">        }
 </span><span id="390" class="l">        <span class="php-keyword1">if</span> (<span class="php-var">$useDeeplinkAsFallback</span> === <span class="php-keyword1">true</span>) {
@@ -571,7 +573,7 @@
 </span><span id="397" class="l">    <span class="php-comment">/**
 </span></span><span id="398" class="l"><span class="php-comment">     * @return boolean
 </span></span><span id="399" class="l"><span class="php-comment">     */</span>
-</span><span id="400" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> hasDeeplinkWithProductAddedToCart()
+</span><span id="400" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> hasAlternativeDeeplink()
 </span><span id="401" class="l">    {
 </span><span id="402" class="l">        <span class="php-keyword1">return</span> <span class="php-keyword1">isset</span>(<span class="php-var">$this</span>-&gt;deeplink2);
 </span><span id="403" class="l">    }
@@ -685,7 +687,7 @@
 	</div>
 </div>
 </div>
-<script src="resources/combined.js?8bb5e6806d116b2e9c054da8efc852cee2251840"></script>
-<script src="elementlist.js?f871e97699dd2d4a82eb10a4e63254d476bfc1d6"></script>
+<script src="resources/combined.js?942bfd8dc01177ceb36c45d34960b3ca1b9a2877"></script>
+<script src="elementlist.js?73b685a9591254d9ccc3a328fa83c343ba5a617c"></script>
 </body>
 </html>

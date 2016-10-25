@@ -134,10 +134,10 @@ class ProductTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($data['ShopCategoryIdPath'], $product->getShopCategoryIdPath());
         $this->assertEquals($data['AffilinetCategoryIdPath'], $product->getAffilinetCategoryIdPath());
         $this->assertEquals($data['Deeplink1'], $product->getDeeplink());
-        $this->assertEquals($data['Deeplink2'], $product->getDeeplinkWithWithProductAddedToCart());
-        $this->assertEquals($data['Deeplink2'], $product->getDeeplinkWithWithProductAddedToCart(false));
-        $this->assertEquals($data['Deeplink2'], $product->getDeeplinkWithWithProductAddedToCart(true));
-        $this->assertTrue($product->hasDeeplinkWithProductAddedToCart());
+        $this->assertEquals($data['Deeplink2'], $product->getAlternativeDeeplink());
+        $this->assertEquals($data['Deeplink2'], $product->getAlternativeDeeplink(false));
+        $this->assertEquals($data['Deeplink2'], $product->getAlternativeDeeplink(true));
+        $this->assertTrue($product->hasAlternativeDeeplink());
 
         $this->assertEquals($data['Brand'], $product->getBrand());
         $this->assertEquals($data['Manufacturer'], $product->getManufacturer());
@@ -326,8 +326,8 @@ class ProductTest extends \PHPUnit_Framework_TestCase
         ];
 
         $product = new \Affilinet\ProductData\Responses\ResponseElements\Product($data);
-        $this->assertEquals(null, $product->getDeeplinkWithWithProductAddedToCart());
-        $this->assertEquals($data['Deeplink1'], $product->getDeeplinkWithWithProductAddedToCart(true));
+        $this->assertEquals(null, $product->getAlternativeDeeplink());
+        $this->assertEquals($data['Deeplink1'], $product->getAlternativeDeeplink(true));
 
     }
 }
