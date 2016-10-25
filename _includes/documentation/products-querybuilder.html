@@ -48,6 +48,7 @@ $productsRequest
 <p> Exactly match a term </p>
 {% highlight php  %}
 <?php
+$query = new \Affilinet\ProductData\Requests\Helper\Query();
 // will include apple but not applejuice
 $query->where(
     $query
@@ -62,6 +63,7 @@ $query->where(
 <p> Combine terms with OR </p>
 {% highlight php  %}
 <?php
+$query = new \Affilinet\ProductData\Requests\Helper\Query();
 // will include results matching apple or samsung
 $query->where(
     $query
@@ -77,6 +79,7 @@ $query->where(
 <p> Exclude terms </p>
 {% highlight php  %}
 <?php
+$query = new \Affilinet\ProductData\Requests\Helper\Query();
 $query->where(
     $query
         ->expr()
@@ -107,7 +110,7 @@ $query
             // you can add as many parameters as you like or an array
             ->containsNot('ipod', 'iphone', 'mac', 'iPad' )
     );
-$productsRequest->query( $query);
+$productsRequest->query($query);
 
 $response = $productsRequest->send();
 
@@ -129,7 +132,7 @@ $query
             ->contains('apple')
             ->contains('ipad')
     );
-$productsRequest->query( $query);
+$response = $productsRequest->query($query)->send();
 
 {% endhighlight %}
 <br>
@@ -140,10 +143,40 @@ $productsRequest->query( $query);
 
 <p>
     <strong>Chain Query Expressions</strong> <br>
-    Combine with OR: Find (apple and "iphone") or (samsung and "galaxy") </p>
+</p>
+
+
+<div class="well well-sm">
+    For better code legibility both methods <pre>where()</pre> and <pre>andWhere()</pre> can be used. They provide the same functionality.</a>.
+</div>
+
+<p>Chaining with AND</p>
+
 {% highlight php  %}
 <?php
+$productsRequest = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
+$productsRequest->query($query
+->where($query->expr()
+->contains('apple')
+)
+->andWhere($query->expr()
+->exactly('iphone')
+)
+);
+$response = $productsRequest->query($query)->send();
+{% endhighlight %}
 
+
+<br>
+<br>
+
+<p>
+    Combine with OR: Find (apple and "iphone") or (samsung and "galaxy")
+</p>
+{% highlight php  %}
+<?php
+$productsRequest = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
+$query = new \Affilinet\ProductData\Requests\Helper\Query();
 $query
     ->where($query->epxr()
         ->contains('apple')
@@ -153,6 +186,7 @@ $query
         ->contains('samsung')
         ->exactly('galaxy')
     );
+$response = $productsRequest->query($query)->send();
 
 {% endhighlight %}
 <br>
@@ -175,8 +209,10 @@ $query
 
 {% highlight php  %}
 <?php
-$productsRequest->query($query
-    ->andWhere($query->expr()
+$productsRequest = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
+$query = new \Affilinet\ProductData\Requests\Helper\Query();
+$query
+    ->where($query->expr()
         ->contains('apple')
         ->exactly('iphone')
         ->exactly('t-mobile')
@@ -187,10 +223,74 @@ $productsRequest->query($query
         ->exactly('t-mobile')
     )
 );
+$response = $productsRequest->query($query)->send();
+{% endhighlight %}
+
+<br>
+<br>
+
+<p>
+    <strong>Limitations</strong>
+    <br>
+It is <strong>not possible to nest where statements</strong>: "No <pre>where()</pre> inside of <pre>where()</pre> methods.
+They only accept expression statements "<pre>expr()</pre>".
+</p>
+
+{% highlight php  %}
+<?php
+$productsRequest = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
+$query = new \Affilinet\ProductData\Requests\Helper\Query();
+
+// invalid code!
+$query->where(
+    $query
+        ->expr()
+        ->contains('apple')
+        // next line will not work:
+        ->orWhere(
+            $query
+                ->expr()
+                ->contains('samsung')
+        );
+
 
 {% endhighlight %}
 <br>
 <br>
+
+<p>
+It is not possible to chain expressions inside a <pre>where()</pre> with OR.
+</p>
+{% highlight php  %}
+<?php
+$productsRequest = new \Affilinet\ProductData\Requests\ProductsRequest($affilinet);
+$query = new \Affilinet\ProductData\Requests\Helper\Query();
+
+// invalid code!
+$query->where(
+    $query
+        ->expr()
+        ->contains('apple')
+        ->orContains('samsung) // !!! method not defined !!!
+);
+
+// correct code:
+$query->where(
+    $query
+        ->expr()
+        ->containsOneOf('apple', 'samsung')
+
+);
+
+// alternate correct code:
+$query
+    ->where($query->expr()->contains('apple'));
+    ->orWhere($query->expr()->contains('samsung'));
+
+);
+
+{% endhighlight %}
+
 
 <p>
     <strong>Write queries by yourself</strong><br>
