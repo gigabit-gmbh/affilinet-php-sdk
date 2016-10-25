@@ -52,11 +52,11 @@ foreach ($categoriesResponse->getCategories() as $category) {
 <div class="well well-sm">
     <strong>Use a shop category to filter a Product Request</strong>
     <br>
-    <code>$productRequest->addFilterQuery('ShopCategoryPath', $category->getNamePath() )</code>
+    <code>$prodReq->addFilterQuery('ShopCategoryPath', $category->getNamePath() )</code>
     <br>
     or
     <br>
-    <code>$productRequest->addFilterQuery('ShopCategoryId', $category->getId() )</code>
+    <code>$prodReq->addFilterQuery('ShopCategoryId', $category->getId() )</code>
 </div>
 
 
@@ -86,12 +86,11 @@ $categoriesResponse = $categoriesRequest->send();
 
 <div class="well well-sm">
     <strong>You can use a affilinet category to filter a Product Request</strong><br>
-    <code>$productRequest->addFilterQuery('AffilinetCategoryPath', $affilinetCategory->getNamePath() )</code>
-
+    <code>$prodReq->addFilterQuery('AffilinetCategoryPath', $category->getNamePath() )</code>
     <br>
     or
     <br>
-    <code>$productRequest->addFilterQuery('AffilinetCategoryId', $affilinetCategory->getId() )</code>
+    <code>$prodReq->addFilterQuery('AffilinetCategoryId', $category->getId() )</code>
 </div>
 
 
