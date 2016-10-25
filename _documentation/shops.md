@@ -12,6 +12,8 @@ sections:
     title: Shop Response
   - slug: shops-properties
     title: Shop Properties
+  - slug: shops-categories
+    title: Shop Categories
 
 ---
 

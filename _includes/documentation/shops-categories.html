@@ -1,0 +1,102 @@
+<p>
+   Every shop matches its products into the generic affilinet product categories. But most shops also provide custom categories.
+</p>
+<strong>Custom Shop Categories</strong>
+
+
+{% highlight php linenos %}
+<?php
+// create a ShopPropertiesRequest Object
+$categoriesRequest = new \Affilinet\ProductData\Requests\CategoriesRequest($affilinet);
+
+$categoriesRequest->setShopId('123456'); // where '123456' has to be the valid shopId of course
+
+$categoriesResponse = $categoriesRequest->send();
+
+// iterate over the categories
+foreach ($categoriesResponse->getCategories() as $category) {
+    /**
+     * @var $category Affilinet\ProductData\Responses\ResponseElements\CategoryInterface
+     */
+    // the category ID
+    $category->getId();
+
+    // the name of this category for example "Menswear"
+    $category->getName();
+
+    /**
+     * A string representing the hierarchical position of this category within the
+     * category tree, top down: if e.g. “987>1111>3235” is returned, this reads
+     * “this category (3235) has the parent category 1111, which has the
+     * parent category 987, which does NOT have a parent category (in other
+     * words: 987 is a top category).
+     */
+    $category->getIdPath();
+
+
+    /**
+     * The titles of all categories along the path from the root node to this category, separated by ‘>’.
+     * e.g. “Clothing & Accessories>Menswear”.
+     */
+    $category->getNamePath();
+
+
+    // Number of products in this category
+    $category->getProductCount();
+
+}
+
+{% endhighlight %}
+<br>
+<div role="alert" class="alert alert-info">
+    <strong>Use a shop category to filter a Product Request</strong>
+
+    <ul>
+        <li>
+            Use <code>$category->getNamePath()</code> to filter a Product Request <code>$productRequest->addFilterQuery('ShopCategoryPath', $category->getNamePath() )</code>
+        </li>
+        <li>
+            Use <code>$category->getId()</code> to filter a Product Request <code>$productRequest->addFilterQuery('ShopCategoryId', $category->getId() )</code>
+        </li>
+    </ul>
+
+</div>
+
+<br>
+<p>
+    <strong>affilinet Categories</strong>
+    <br>
+    The affilinet categories are always the same, only the product result counts will change
+</p>
+
+
+{% highlight php linenos %}
+<?php
+// create a ShopPropertiesRequest Object
+$categoriesRequest = new \Affilinet\ProductData\Requests\CategoriesRequest($affilinet);
+
+$categoriesRequest->getAffilinetCategories()
+
+// this would also return affilinet categories
+// $categoriesRequest->setShopId(0);
+
+$categoriesResponse = $categoriesRequest->send();
+{% endhighlight %}
+
+<br>
+
+<div role="alert" class="alert alert-info">
+    <strong>Use a affilinet category to filter a Product Request</strong>
+
+    <ul>
+        <li>
+            Use <code>$affilinetCategory->getNamePath()</code> to filter a Product Request <code>$productRequest->addFilterQuery('AffilinetCategoryPath', $affilinetCategory->getNamePath() )</code>
+        </li>
+        <li>
+            Use <code>$affilinetCategory->getId()</code> to filter a Product Request <code>$productRequest->addFilterQuery('AffilinetCategoryId', $affilinetCategory->getId() )</code>
+        </li>
+    </ul>
+
+</div>
+
+
