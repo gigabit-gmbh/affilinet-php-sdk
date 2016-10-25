@@ -1,0 +1,56 @@
+
+<p>
+   Every ShopsRequest returns a <code>Affilinet\ProductData\Responses\ShopsResponse</code> Object.
+   Which consists of a list of shops and some meta information.
+   <br>
+   <br>
+   <strong> Meta information:</strong>
+</p>
+
+{% highlight php linenos %}
+<?php
+// number of total shops found
+$shopsResponse->totalRecords();
+
+// Number of pages (Pages are "1 based", there is no page with number 0)
+$shopsResponse->totalPages()
+
+// Number of shops on this page
+$shopsResponse->pageSize()
+
+// number of currentPage (Pages are "1 based", there is no page with number 0)
+$shopsResponse->pageNumber()
+
+
+{% endhighlight %}
+
+<br>
+<br>
+
+<p>
+   <strong>Shop Object</strong>
+</p>
+
+
+{% highlight php linenos %}
+<?php
+// get all shops with active partnership
+$shopsRequest = new \Affilinet\ProductData\Requests\ShopsRequest($affilinet);
+$shopsRequest->addShopLogoWithSize50px()
+$shopsResponse = $shopsRequest->send();
+
+// get the shopList (an array of Shop objects)
+
+$shops  = $shopsResponse->getShops();
+
+foreach ($shops as $shop) {
+
+   /** @var $shop Affilinet\ProductData\Responses\ResponseElements\ShopInterface */
+   $shop->getProductCount(); // number of all products
+   $shop->getProgramId();    // the affilinet program ID
+   $shop->getName();         // the shop name (for example "zalando.de - Schuhe und Fashion online"
+   $shop->getUrl();          // the shop URL (for example https://www.zalando.de/ )
+   $shop->getLastUpdate();   // \DateTime when the shop products where last updated
+   $shop->getLogo();         // an Image Object of the requested shop logo
+}
+{% endhighlight %}

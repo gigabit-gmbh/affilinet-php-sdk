@@ -1,0 +1,45 @@
+
+<p>
+  Shops can define custom properties for filtering their products.
+
+   <br>
+   Advertisers can provide us with 3 types of data for each product:
+   <ul>
+   <li>obligatory fields (e.g. price or deeplink)</li>
+   <li>optional fields (e.g. brand or distributor)</li>
+   <li> custom fields (which we call “product properties” or "shop properties").</li>
+</ul>
+   <br>
+   The latter type is very flexible: every additional column which a shop delivers to us, is handed out to
+   the publishers with un-altered name. So a shoe shop can provide us with custom fields / product
+   properties like “size” or “material”, while a notebook shop can send us “HDD capacity”, “Screen
+   Size”, “CPU speed” etc...
+   <br>
+   With this method, you can specify a ShopId and we send back to you, what properties this shop has
+   and how many of its products have this property set.
+</p>
+
+<strong>Get Shop Properties</strong>
+
+{% highlight php linenos %}
+<?php
+// create a ShopPropertiesRequest Object
+$shopPropertiesRequest = new \Affilinet\ProductData\Requests\ShopPropertiesRequest($affilinet);
+
+$shopPropertiesRequest->setShopId(123456'); // where '123456' has to be the valid shopId of course
+
+$shopPropertiesResponse = $shopPropertiesRequest->send();
+
+echo 'Total Shop Properties : ' . $shopPropertiesResponse->totalProperties();
+echo 'Total Shop Properties : ' . $shopPropertiesResponse->totalRecords(); // alias function
+
+$shopPropertiesResponse->hasProperty('size'); // will return true if you can use "size" as a filter for this shop
+
+// get all shop properties
+foreach ($shopPropertiesResponse->getProperties() as $shopProperty) {
+   /** @var $shopProperty Affilinet\ProductData\Responses\ResponseElements\ShopProperty
+   $shopProperty->getPropertyName();   // the name of this filter for example "size"
+   $shopProperty->getTotalCount();     // the number of total results where this filter is set
+}
+
+{% endhighlight %}

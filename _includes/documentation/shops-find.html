@@ -1,0 +1,62 @@
+
+<p>
+   By default an empty ShopsRequest will always return all shops you have an active partnership with
+</p>
+
+<div role="alert" class="alert alert-info">
+   <strong>Getting no results?</strong> <br>
+   Make sure you have an active partnership with at least one shop.
+</div>
+
+<p>
+   To see a list of all shops create an empty ShopsRequest like this:
+
+{% highlight php linenos %}
+<?php
+$shopsRequest = new \Affilinet\ProductData\Requests\ShopsRequest($affilinet);
+$shopsResponse = $shopsRequest->send();
+
+echo 'You have ' . $shopsResponse->totalRecords() . ' shops with an active partnership';
+
+{% endhighlight %}
+
+<p><strong>Find Shops by Keyword</strong></p>
+
+{% highlight php linenos %}
+<?php
+// create a  ShopsRequest Object
+$shopsRequest = new \Affilinet\ProductData\Requests\ShopsRequest($affilinet);
+
+
+$shopsRequest
+   ->onlyShopsMatchingKeyword('Zalando') // only shops which match "Zalando"
+
+$shopsResponse = $shopsRequest->send();
+
+echo 'Shops matching "Zalando": ' . $shopsResponse->totalRecords();
+{% endhighlight %}
+
+<br>
+<br>
+<p><strong>Include a Shop Logo</strong>
+   <br>
+You can request one logo to be returned for each shop. You can choose between 5 sizes
+</p>
+
+{% highlight php linenos %}
+<?php
+// create a  ShopsRequest Object
+$shopsRequest = new \Affilinet\ProductData\Requests\ShopsRequest($affilinet);
+
+// add a logo of 468px width
+$shopsRequest->addShopLogoWithSize468px();
+
+// or: $shopsRequest->addShopLogoWithSize90px()
+// or: $shopsRequest->addShopLogoWithSize120px();
+// or: $shopsRequest->addShopLogoWithSize150px();
+
+// or: $shopsRequest->addShopLogoWithSize50px();
+
+$shopsResponse = $shopsRequest->send();
+
+{% endhighlight %}
