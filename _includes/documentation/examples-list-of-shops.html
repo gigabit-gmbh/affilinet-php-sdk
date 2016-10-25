@@ -6,7 +6,7 @@
 $shopsRequest = new \Affilinet\ProductData\Requests\ShopsRequest($affilinet);
 
 $shopsRequest
-    ->addAllShopLogos()     // to include all logo sizes
+    ->addShopLogoWithSize50px()     // to include a shop logo with 50px width
     ->onlyShopsMatchingKeyword('Zalando') // only shops which match this keyword
     ->onlyShopsUpdatedAfter(new \DateTime('last month')); // only shops that have updated their products after this date
 
