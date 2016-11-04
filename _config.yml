@@ -24,6 +24,8 @@ mainmenu:
     slug: reference
   - title: Download 
     slug: download
+  - title: Support
+    slug: https://github.com/affilinet/productdata-php-sdk/issues
 
 # Conversion
 markdown: kramdown
