@@ -3,6 +3,7 @@ Grab our <b>Product Data PHP SDK</b> and have access to millions of products wit
 
 Refer to our documentation in order to get started: https://affilinet.github.io/productdata-php-sdk
 
+
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/82ce36fe-03de-4feb-ae86-ad5a01adb371/big.png)](https://insight.sensiolabs.com/projects/82ce36fe-03de-4feb-ae86-ad5a01adb371)
 
 ## Installation
