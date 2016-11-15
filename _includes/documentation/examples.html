@@ -14,6 +14,12 @@ $affilinet = new \Affilinet\ProductData\AffilinetClient($config);
 {% endhighlight %}
 </p>
 
+<p>
+    This SDK uses <a href="https://github.com/guzzle/guzzle" target="_blank">Guzzle</a> as internal HttpClient.
+    You can create your own guzzle object and inject it as config parameter named <code>'http_client'</code>.
+    If <code>'http_client'</code> is an array, this array will be used as config array for the guzzle client.
+</p>
+
 <div class="well well-sm">
     All examples use the affilinet client object named <code>$affilinet</code> as created above.
 </div>
