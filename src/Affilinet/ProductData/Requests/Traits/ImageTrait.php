@@ -31,7 +31,8 @@ trait ImageTrait
             ->addProductImageWithSize60px()
             ->addProductImageWithSize90px()
             ->addProductImageWithSize120px()
-            ->addProductImageWithSize180px();
+            ->addProductImageWithSize180px()
+            ->addImageScale('OriginalImage');
 
         return $this;
     }
