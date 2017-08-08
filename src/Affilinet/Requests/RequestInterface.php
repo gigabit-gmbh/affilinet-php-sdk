@@ -9,7 +9,7 @@
 
 namespace Affilinet\Requests;
 
-use Affilinet\ProductData\AffilinetProductClient;
+use Affilinet\AffilinetClient;
 use Affilinet\Responses\ResponseInterface;
 
 /**
@@ -18,9 +18,9 @@ use Affilinet\Responses\ResponseInterface;
 interface RequestInterface
 {
     /**
-     * @param \Affilinet\ProductData\AffilinetProductClient $affilinetClient
+     * @param \Affilinet\AffilinetClient $affilinetClient
      */
-    public function __construct(AffilinetProductClient $affilinetClient);
+    public function init(AffilinetClient $affilinetClient);
 
     /**
      * @return ResponseInterface
