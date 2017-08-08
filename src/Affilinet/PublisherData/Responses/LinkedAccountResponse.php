@@ -23,13 +23,13 @@ class LinkedAccountResponse extends AbstractSoapResponse {
     public function __construct($response) {
         parent::__construct($response);
 
-        if (!isset($this->getResponse()->LinkedAccountCollection)) {
+        if (!isset($response->LinkedAccountCollection)) {
             $this->account = null;
 
             return;
         }
 
-        $this->account = new Account($this->getResponse()->LinkedAccountCollection);
+        $this->account = new Account($response->LinkedAccountCollection);
     }
 
     /**

@@ -24,13 +24,13 @@ class PaymentResponse extends AbstractSoapResponse {
     public function __construct($response) {
         parent::__construct($response);
 
-        if (!isset($this->getResponse()->PaymentInformationcollection)) {
+        if (!isset($response->PaymentInformationcollection)) {
             $this->payment = null;
 
             return;
         }
 
-        $this->payment = new Account($this->getResponse()->PaymentInformationcollection);
+        $this->payment = new Payment($response->PaymentInformationcollection);
     }
 
     /**
