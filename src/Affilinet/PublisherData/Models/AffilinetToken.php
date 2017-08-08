@@ -25,14 +25,14 @@ class AffilinetToken {
 
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getToken() {
         return $this->token;
     }
 
     /**
-     * @param mixed $token
+     * @param string $token
      *
      * @return AffilinetToken
      */

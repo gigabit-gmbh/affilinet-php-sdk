@@ -4,7 +4,9 @@ namespace Affilinet\PublisherData\Requests;
 
 use Affilinet\Exceptions\AffilinetProductWebserviceException;
 use Affilinet\PublisherData\AffilinetPublisherClient;
-use Affilinet\Requests\AbstractRequest;
+use Affilinet\PublisherData\Responses\LinkedAccountResponse;
+use Affilinet\PublisherData\Responses\PaymentResponse;
+use Affilinet\Requests\AbstractSoapRequest;
 use Doctrine\Instantiator\Exception\InvalidArgumentException;
 
 /**
@@ -12,63 +14,56 @@ use Doctrine\Instantiator\Exception\InvalidArgumentException;
  *
  * @author Thomas Helmrich <thomas@gigabit.de>
  */
-class AccountRequest extends AbstractRequest implements AccountRequestInterface
-{
+class AccountRequest extends AbstractSoapRequest {
 
     /**
-     * @return string
+     * @var $affilinetClient AffilinetPublisherClient
      */
-    public function getEndpoint()
-    {
-        return 'https://api.affili.net/V2.0/AccountService.svc?wsdl';
-    }
+    protected $affilinetClient;
 
     /**
      * CategoriesRequest constructor.
      * @param AffilinetPublisherClient $affilinetClient
      */
-    public function __construct(AffilinetPublisherClient $affilinetClient)
-    {
-        parent::__construct($affilinetClient);
-        $this->queryParams['ShopId'] = 0;
+    public function __construct(AffilinetPublisherClient $affilinetClient) {
+        parent::init($affilinetClient);
+        $this->setToken($this->affilinetClient->getAffilinetToken($this->getToken()));
     }
 
     /**
-     * @return CategoriesResponseInterface
-     * @throws AffilinetProductWebserviceException
+     * @return string
      */
-    public function send()
-    {
-        $psr7Request = $this->getPsr7Request();
-        $psr7Response = $this->getAffilinetClient()->getHttpClient()->send($psr7Request);
-        $response = new CategoriesResponse($psr7Response);
+    public function getEndpoint() {
+        return 'https://api.affili.net/V2.0/AccountService.svc?wsdl';
+    }
 
-        return $response;
 
+    /**
+     *
+     * @return LinkedAccountResponse
+     */
+    public function getLinkedAccounts() {
+        $accounts = $this->send("GetLinkedAccounts", array('PublisherId' => $this->affilinetClient->getPublisherId()));
+
+        return new LinkedAccountResponse($accounts);
     }
 
     /**
-     * @param  integer $shopId
-     * @return $this;
+     * @param \DateTime $startDate
+     * @param \DateTime $endDate
+     *
+     * @return PaymentResponse
      */
-    public function setShopId($shopId = 0)
-    {
-        if (!is_integer($shopId) && $shopId !== 0) {
-            throw new InvalidArgumentException('$shopId must be an integer value or 0');
-        }
-        $this->queryParams['ShopId'] = $shopId;
+    public function getPayments($startDate, $endDate) {
+        $accounts = $this->send("GetPayments", array(
+            'PublisherId' => $this->affilinetClient->getPublisherId(),
+            'EndDate' => $endDate->getTimestamp(),
+            'StartDate' => $startDate->getTimestamp(),
+        ));
 
-        return $this;
+        return new PaymentResponse($accounts);
     }
 
-    /**
-     * @return $this
-     */
-    public function getAffilinetCategories()
-    {
-        $this->queryParams['ShopId'] = 0;
-
-        return $this;
-    }
+    // TODO: PubliserhSummary
 
 }
