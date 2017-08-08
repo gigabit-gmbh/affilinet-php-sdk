@@ -2,9 +2,7 @@
 
 namespace Affilinet\PublisherData\Responses;
 
-use Affilinet\PublisherData\Responses\ResponseElements\Account;
 use Affilinet\PublisherData\Responses\ResponseElements\CreativeCategory;
-use Affilinet\PublisherData\Responses\ResponseElements\Payment;
 use Affilinet\Responses\AbstractSoapResponse;
 
 /**

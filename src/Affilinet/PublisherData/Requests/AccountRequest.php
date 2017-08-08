@@ -2,12 +2,10 @@
 
 namespace Affilinet\PublisherData\Requests;
 
-use Affilinet\Exceptions\AffilinetProductWebserviceException;
 use Affilinet\PublisherData\AffilinetPublisherClient;
 use Affilinet\PublisherData\Responses\LinkedAccountResponse;
 use Affilinet\PublisherData\Responses\PaymentResponse;
 use Affilinet\Requests\AbstractSoapRequest;
-use Doctrine\Instantiator\Exception\InvalidArgumentException;
 
 /**
  * Class AccountRequest
