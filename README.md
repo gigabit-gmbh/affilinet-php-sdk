@@ -1,16 +1,16 @@
-# affilinet Product Data PHP SDK
-Grab our <b>Product Data PHP SDK</b> and have access to millions of products within minutes.    
+# affilinet PHP SDK
+Grab the <b>PHP SDK</b> and have access to our webservice within minutes.    
 
+This is a fork from [Official affilinet Product SDK](https://github.com/affilinet/productdata-php-sdk). It doesn´t had any possiblities to access to other webservice endpoints. 
+
+//TODO: extend original documentation
 Refer to our documentation in order to get started: https://affilinet.github.io/productdata-php-sdk
-
-
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/82ce36fe-03de-4feb-ae86-ad5a01adb371/big.png?v=1)](https://insight.sensiolabs.com/projects/82ce36fe-03de-4feb-ae86-ad5a01adb371)
 
 ## Installation
 This SDK can be installed with composer
 
 ```sh
-composer require affilinet/productdata-php-sdk
+composer require gigabit/affilinet-php-sdk
 ```
 > **Please note:** This packages requires PHP 5.6 or greater.
 
