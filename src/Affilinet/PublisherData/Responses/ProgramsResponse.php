@@ -6,18 +6,19 @@ use Affilinet\PublisherData\Responses\ResponseElements\Account;
 use Affilinet\PublisherData\Responses\ResponseElements\Creative;
 use Affilinet\PublisherData\Responses\ResponseElements\CreativeCategory;
 use Affilinet\PublisherData\Responses\ResponseElements\Payment;
+use Affilinet\PublisherData\Responses\ResponseElements\Program;
 use Affilinet\Responses\AbstractSoapResponse;
 
 /**
- * Class CreativeResponse
+ * Class ProgramsResponse
  *
  * @package Affilinet\PublisherData\Responses
  * @author Thomas Helmrich <thomas@gigabit.de>
  */
-class CreativesResponse extends AbstractSoapResponse {
+class ProgramsResponse extends AbstractSoapResponse {
 
-    /** @var array<Creative> $creative */
-    protected $creatives;
+    /** @var array<Program> $programs */
+    protected $programs;
 
     /** @var int $totalResults */
     protected $totalResults;
@@ -30,7 +31,7 @@ class CreativesResponse extends AbstractSoapResponse {
         parent::__construct($response);
 
         if (!isset($response->TotalResults)) {
-            $this->creatives = null;
+            $this->programs = null;
             $this->totalResults = 0;
 
             return;
@@ -38,23 +39,24 @@ class CreativesResponse extends AbstractSoapResponse {
 
         $this->totalResults = $response->TotalResults;
 
-        $this->creatives = array();
-        $creativeResponse = $response->CreativeCollection->Creative;
-        if (is_array($creativeResponse)) {
-            foreach ($creativeResponse as $creative) {
-                array_push($this->creatives, new Creative($creative));
+        $this->programs = array();
+
+        $programResponse = $response->ProgramCollection->Program;
+        if (is_array($programResponse)) {
+            foreach ($programResponse as $program) {
+                array_push($this->programs, new Program($program));
             }
         } else {
-            array_push($this->creatives, new Creative($creativeResponse));
-        }
+            array_push($this->programs, new Program($programResponse));
 
+        }
     }
 
     /**
-     * @return array<Creative>|null
+     * @return array<Program>|null
      */
-    public function getCreatives() {
-        return $this->creatives;
+    public function getPrograms() {
+        return $this->programs;
     }
 
 }

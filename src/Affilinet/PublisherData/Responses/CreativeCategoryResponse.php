@@ -27,13 +27,20 @@ class CreativeCategoryResponse extends AbstractSoapResponse {
 
         if (!isset($response->CreativeCategoryCollection)) {
             $this->creativeCategories = null;
+
             return;
         }
 
         $this->creativeCategories = array();
-        foreach($response->CreativeCategoryCollection->CreativeCategory as $creativeCategory){
-            array_push($this->creativeCategories, new CreativeCategory($creativeCategory));
+        $creativeCategoryResponse = $response->CreativeCategoryCollection->CreativeCategory;
+        if (is_array($creativeCategoryResponse)) {
+            foreach ($creativeCategoryResponse as $creativeCategory) {
+                array_push($this->creativeCategories, new CreativeCategory($creativeCategory));
+            }
+        } else {
+            array_push($this->creativeCategories, new CreativeCategory($creativeCategoryResponse));
         }
+
     }
 
     /**

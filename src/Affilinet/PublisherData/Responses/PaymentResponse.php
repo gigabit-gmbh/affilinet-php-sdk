@@ -14,8 +14,8 @@ use Affilinet\Responses\AbstractSoapResponse;
  */
 class PaymentResponse extends AbstractSoapResponse {
 
-    /** @var Payment $payment */
-    protected $payment;
+    /** @var array<Payment> $payments */
+    protected $payments;
 
     /**
      * PaymentResponse constructor.
@@ -25,19 +25,27 @@ class PaymentResponse extends AbstractSoapResponse {
         parent::__construct($response);
 
         if (!isset($response->PaymentInformationcollection)) {
-            $this->payment = null;
+            $this->payments = null;
 
             return;
         }
 
-        $this->payment = new Payment($response->PaymentInformationcollection);
+        $this->payments = array();
+        $paymentInformationResponse = $response->PaymentInformationcollection->PaymentInformation;
+        if (is_array($paymentInformationResponse)) {
+            foreach ($paymentInformationResponse as $paymentInformation) {
+                array_push($this->payments, new Payment($paymentInformation));
+            }
+        } else {
+            array_push($this->payments, new Payment($paymentInformationResponse));
+        }
     }
 
     /**
-     * @return Payment|null
+     * @return array<Payment>|null
      */
-    public function getPayment() {
-        return $this->payment;
+    public function getPayments() {
+        return $this->payments;
     }
 
 }
