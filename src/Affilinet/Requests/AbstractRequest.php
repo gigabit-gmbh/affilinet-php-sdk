@@ -9,7 +9,7 @@
 
 namespace Affilinet\Requests;
 
-use Affilinet\ProductData\AffilinetProductClient;
+use Affilinet\AffilinetClient;
 use GuzzleHttp\Psr7\Request;
 
 /**
@@ -19,7 +19,7 @@ abstract class AbstractRequest implements RequestInterface
 {
 
     /**
-     * @var $affilinetClient AffilinetProductClient
+     * @var $affilinetClient AffilinetClient
      */
     protected $affilinetClient;
 
@@ -29,9 +29,9 @@ abstract class AbstractRequest implements RequestInterface
     protected $queryParams;
 
     /**
-     * @param \Affilinet\ProductData\AffilinetProductClient $affilinetClient
+     * @param \Affilinet\AffilinetClient $affilinetClient
      */
-    public function __construct(AffilinetProductClient $affilinetClient)
+    public function init(AffilinetClient $affilinetClient)
     {
         $this->affilinetClient = $affilinetClient;
     }
@@ -57,7 +57,7 @@ abstract class AbstractRequest implements RequestInterface
     }
 
     /**
-     * @return AffilinetProductClient
+     * @return AffilinetClient
      */
     public function getAffilinetClient()
     {
