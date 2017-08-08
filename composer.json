@@ -1,14 +1,18 @@
 {
-  "name": "affilinet/productdata-php-sdk",
-  "description": "affilinet Product Data PHP SDK",
+  "name": "gigabit/affilinet-php-sdk",
+  "description": "affilinet PHP SDK, forked and extended from https://github.com/affilinet/productdata-php-sdk",
   "keywords": ["affilinet", "sdk"],
   "type": "library",
-  "homepage": "https://github.com/affilinet/productdata-php-sdk",
+  "homepage": "https://github.com/gigabit-gmbh/affilinet-php-sdk",
   "license": "MIT",
   "authors": [
     {
       "name": "Stefan Gotre / teraone.de",
       "homepage": "https://www.teraone.de"
+    },
+    {
+      "name": "Thomas Helmrich / gigabit.de",
+      "homepage": "https://www.gigabit.de"
     }
   ],
   "require": {
