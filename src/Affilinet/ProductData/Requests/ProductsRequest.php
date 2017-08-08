@@ -10,6 +10,7 @@
 namespace Affilinet\ProductData\Requests;
 
 use Affilinet\Exceptions\AffilinetProductWebserviceException;
+use Affilinet\ProductData\AffilinetProductClient;
 use Affilinet\ProductData\Requests\Traits\ImageTrait;
 use Affilinet\ProductData\Requests\Traits\LogoTrait;
 use Affilinet\ProductData\Requests\Traits\PaginationTrait;
@@ -48,6 +49,16 @@ class ProductsRequest extends AbstractRequest implements ProductsRequestInterfac
      * @var boolean $useAlternateEndpoint
      */
     private $useAlternateEndpoint = false;
+
+    /**
+     * ProductsRequest constructor.
+     *
+     * @param AffilinetProductClient $affilinetClient
+     */
+    public function __construct(AffilinetProductClient $affilinetClient)
+    {
+        parent::init($affilinetClient);
+    }
 
     /**
      * Find one Product by Id

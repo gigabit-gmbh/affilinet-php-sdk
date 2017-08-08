@@ -10,6 +10,7 @@
 namespace Affilinet\ProductData\Requests;
 
 use Affilinet\Exceptions\AffilinetProductWebserviceException;
+use Affilinet\ProductData\AffilinetProductClient;
 use Affilinet\ProductData\Requests\Traits\ShopLogoTrait;
 use Affilinet\ProductData\Requests\Traits\PaginationTrait;
 use Affilinet\ProductData\Responses\ShopsResponse;
@@ -22,6 +23,16 @@ use Affilinet\Requests\AbstractRequest;
 class ShopsRequest extends AbstractRequest implements ShopsRequestInterface
 {
     use ShopLogoTrait, PaginationTrait;
+
+    /**
+     * ShopsRequest constructor.
+     *
+     * @param AffilinetProductClient $affilinetClient
+     */
+    public function __construct(AffilinetProductClient $affilinetClient)
+    {
+        parent::init($affilinetClient);
+    }
 
     /**
      * @return string

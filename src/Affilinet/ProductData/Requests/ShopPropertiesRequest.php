@@ -10,6 +10,7 @@
 namespace Affilinet\ProductData\Requests;
 
 use Affilinet\Exceptions\AffilinetProductWebserviceException;
+use Affilinet\ProductData\AffilinetProductClient;
 use Affilinet\ProductData\Responses\ShopPropertiesResponse;
 use Affilinet\ProductData\Responses\ShopPropertiesResponseInterface;
 use Affilinet\Requests\AbstractRequest;
@@ -24,6 +25,16 @@ class ShopPropertiesRequest extends AbstractRequest implements ShopPropertiesReq
     /**
      * @const string The base URI of the product data webservice.
      */
+
+    /**
+     * ShopPropertiesRequest constructor.
+     *
+     * @param AffilinetProductClient $affilinetClient
+     */
+    public function __construct(AffilinetProductClient $affilinetClient)
+    {
+        parent::init($affilinetClient);
+    }
 
     /**
      * @return string

@@ -14,6 +14,7 @@ use Affilinet\ProductData\AffilinetProductClient;
 use Affilinet\ProductData\Requests\Traits\PaginationTrait;
 use Affilinet\ProductData\Responses\CategoriesResponse;
 use Affilinet\ProductData\Responses\CategoriesResponseInterface;
+use Affilinet\PublisherData\Models\AffilinetToken;
 use Affilinet\Requests\AbstractRequest;
 use Doctrine\Instantiator\Exception\InvalidArgumentException;
 
@@ -39,7 +40,7 @@ class CategoriesRequest extends AbstractRequest implements CategoriesRequestInte
      */
     public function __construct(AffilinetProductClient $affilinetClient)
     {
-        parent::__construct($affilinetClient);
+        parent::init($affilinetClient);
         $this->queryParams['ShopId'] = 0;
     }
 
