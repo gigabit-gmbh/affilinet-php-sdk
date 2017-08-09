@@ -39,4 +39,13 @@ class ProgramIntegrationTest extends \PHPUnit_Framework_TestCase {
         $this->assertNotNull($programs);
         $this->assertNotNull($programs->getPrograms());
     }
+
+    public function testGetPrograCategoriesSuccess() {
+        $this->setUp();
+        $search = new \Affilinet\PublisherData\Requests\ProgramsRequest($this->affilinetClient);
+        $programCats = $search->getProgramCategories();
+
+        $this->assertInstanceOf(\Affilinet\PublisherData\Responses\ProgramCategoriesResponse::class, $programCats);
+        $this->assertNotNull($programCats);
+    }
 }

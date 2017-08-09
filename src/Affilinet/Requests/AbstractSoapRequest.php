@@ -39,8 +39,13 @@ abstract class AbstractSoapRequest implements SoapRequestInterface {
      * @param array $parameters The parameters to send - token will be set by self
      * @return mixed
      */
-    public function send($method, $parameters) {
-        $parameters["CredentialToken"] = $this->getToken()->getToken();
+    public function send($method, $parameters = null) {
+
+        if($parameters != null){
+            $parameters["CredentialToken"] = $this->getToken()->getToken();
+        }else{
+            $parameters = $this->getToken()->getToken();
+        }
 
         return $this->getSoapClient()->$method($parameters);
     }

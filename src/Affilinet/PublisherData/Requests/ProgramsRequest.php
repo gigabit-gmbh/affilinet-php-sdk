@@ -5,6 +5,7 @@ namespace Affilinet\PublisherData\Requests;
 use Affilinet\PublisherData\AffilinetPublisherClient;
 use Affilinet\PublisherData\Requests\Traits\PaginationTrait;
 use Affilinet\PublisherData\Requests\Traits\ProgramsQueryTrait;
+use Affilinet\PublisherData\Responses\ProgramCategoriesResponse;
 use Affilinet\PublisherData\Responses\ProgramsResponse;
 use Affilinet\Requests\AbstractSoapRequest;
 
@@ -59,6 +60,15 @@ class ProgramsRequest extends AbstractSoapRequest {
         ));
 
         return new ProgramsResponse($programs);
+    }
+
+    /**
+     * @return ProgramCategoriesResponse
+     */
+    public function getProgramCategories() {
+        $programs = $this->send("GetProgramCategories");
+
+        return new ProgramCategoriesResponse($programs);
     }
 
 }
