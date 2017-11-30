@@ -52,6 +52,16 @@ class ProgramsRequest extends AbstractSoapRequest {
      */
     public function getPrograms() {
 
+        // Set parameters
+        $this->displaySettings = array(
+            'PageSize' => 100,
+            'CurrentPage' => 1
+        );
+
+        $this->programsQuery = array(
+            'PartnershipStatus' => array('Active')
+        );
+
         $this->setPageSize();
         $this->setPage();
 
