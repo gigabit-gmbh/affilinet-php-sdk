@@ -48,23 +48,12 @@ class ProgramsRequest extends AbstractSoapRequest {
     }
 
     /**
+     * @param int $page
+     * @param int $pageSize
+     * @param array $partnerShipStatus
      * @return ProgramsResponse
      */
-    public function getPrograms() {
-
-        // Set parameters
-        $this->displaySettings = array(
-            'PageSize' => 100,
-            'CurrentPage' => 1
-        );
-
-        $this->programsQuery = array(
-            'PartnershipStatus' => array('Active')
-        );
-
-        $this->setPageSize();
-        $this->setPage();
-
+    public function getPrograms($page = 1, $pageSize = 100, $partnerShipStatus = array('Active')) {
         $programs = $this->send("GetPrograms", array(
             'DisplaySettings' => $this->displaySettings,
             'GetProgramsQuery' => $this->programsQuery,
@@ -101,6 +90,24 @@ class ProgramsRequest extends AbstractSoapRequest {
         ));
 
         return new ProgramRatesResponse($programs);
+    }
+
+    /**
+     * @return array
+     */
+    public function getProgramsQuery() {
+        return $this->programsQuery;
+    }
+
+    /**
+     * @param array $programsQuery
+     *
+     * @return ProgramsRequest
+     */
+    public function setProgramsQuery($programsQuery) {
+        $this->programsQuery = $programsQuery;
+
+        return $this;
     }
 
 }

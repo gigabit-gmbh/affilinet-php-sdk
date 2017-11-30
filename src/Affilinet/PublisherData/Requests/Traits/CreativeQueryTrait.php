@@ -22,7 +22,6 @@ trait CreativeQueryTrait {
         return $this;
     }
 
-
     /**
      * @param array <string> $types
      * @return $this
@@ -52,7 +51,6 @@ trait CreativeQueryTrait {
 
         return $this;
     }
-
 
     /**
      * @param int $maxHeight

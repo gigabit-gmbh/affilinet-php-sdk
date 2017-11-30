@@ -48,6 +48,13 @@ class CreativesResponse extends AbstractSoapResponse {
     }
 
     /**
+     * @return int
+     */
+    public function getTotalResults() {
+        return $this->totalResults;
+    }
+
+    /**
      * @return array<Creative>|null
      */
     public function getCreatives() {
