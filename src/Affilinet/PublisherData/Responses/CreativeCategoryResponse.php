@@ -28,7 +28,6 @@ class CreativeCategoryResponse extends AbstractSoapResponse {
 
             return;
         }
-
         $this->creativeCategories = array();
         $creativeCategoryResponse = $response->CreativeCategoryCollection->CreativeCategory;
         if (is_array($creativeCategoryResponse)) {
@@ -38,7 +37,6 @@ class CreativeCategoryResponse extends AbstractSoapResponse {
         } else {
             array_push($this->creativeCategories, new CreativeCategory($creativeCategoryResponse));
         }
-
     }
 
     /**

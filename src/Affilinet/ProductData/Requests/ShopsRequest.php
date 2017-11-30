@@ -44,7 +44,8 @@ class ShopsRequest extends AbstractRequest implements ShopsRequestInterface
 
     /**
      * @return ShopsResponseInterface
-     * @throws AffilinetProductWebserviceException
+     *
+     * @throws
      */
     public function send()
     {

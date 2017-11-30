@@ -76,7 +76,6 @@ class CreativeRequest extends AbstractSoapRequest {
      */
     public function getCreativeCategories($programId) {
         $creativeCategory = $this->send("GetCreativeCategories", array('ProgramId' => $programId));
-
         return new CreativeCategoryResponse($creativeCategory);
     }
 
