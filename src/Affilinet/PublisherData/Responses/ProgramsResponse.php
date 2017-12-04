@@ -55,4 +55,12 @@ class ProgramsResponse extends AbstractSoapResponse {
         return $this->programs;
     }
 
+    /**
+     * @return int
+     */
+    public function getTotalResults() {
+        return $this->totalResults;
+    }
+
+
 }

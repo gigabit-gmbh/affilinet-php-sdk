@@ -15,8 +15,7 @@ use Affilinet\Responses\ResponseInterface;
 /**
  * {@inheritDoc}
  */
-interface ShopsResponseInterface extends ResponseInterface
-{
+interface ShopsResponseInterface extends ResponseInterface {
     public function totalRecords();
 
     public function pageSize();
@@ -26,13 +25,13 @@ interface ShopsResponseInterface extends ResponseInterface
     public function pageNumber();
 
     /**
-     * @return Shop[]
+     * @return array<Shop>
      */
     public function shops();
 
     /**
      * alias of $this->shops()
-     * @return Shop[]
+     * @return array<Shop>
      */
     public function getShops();
 
