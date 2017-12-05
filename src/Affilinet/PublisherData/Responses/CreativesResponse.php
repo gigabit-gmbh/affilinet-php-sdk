@@ -34,8 +34,11 @@ class CreativesResponse extends AbstractSoapResponse {
         }
 
         $this->totalResults = $response->TotalResults;
-
         $this->creatives = array();
+
+        if ($this->totalResults === 0) {
+            return;
+        }
         $creativeResponse = $response->CreativeCollection->Creative;
         if (is_array($creativeResponse)) {
             foreach ($creativeResponse as $creative) {

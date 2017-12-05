@@ -74,7 +74,7 @@ class Program {
         $this->logoUrl = $rawProgram->LogoURL;
         $this->trackingMethod = $rawProgram->TrackingMethod;
         $this->cookieLifetime = $rawProgram->CookieLifetime;
-        $this->categoryIds = $rawProgram->ProgramCategoryIds;
+        $this->categoryIds = $rawProgram->ProgramCategoryIds->int;
         $this->semPolicy = $rawProgram->SEMPolicyEnum;
         $this->status = $rawProgram->ProgramStatusEnum;
         $this->commission = $this->setCommissionTypes($rawProgram->CommissionTypes);

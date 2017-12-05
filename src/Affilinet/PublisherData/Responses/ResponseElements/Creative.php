@@ -70,7 +70,7 @@ class Creative {
         $this->programId = $creative->ProgramId;
         $this->creativeTypes = $creative->CreativeTypeEnum;
         $this->creativeNumber = $creative->CreativeNumber;
-        $this->categoryIds = $creative->InCategories;
+        $this->categoryIds = $creative->InCategories->int;
         $this->integrationCode = $creative->IntegrationCode;
         $this->title = $creative->Title;
         if(isset($creative->BannerStub)){

@@ -68,5 +68,119 @@ class ProgramCategory {
         return $categories;
     }
 
+    /**
+     * @return int
+     */
+    public function getId() {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return ProgramCategory
+     */
+    public function setId($id) {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getInsertDate() {
+        return $this->insertDate;
+    }
+
+    /**
+     * @param \DateTime $insertDate
+     *
+     * @return ProgramCategory
+     */
+    public function setInsertDate($insertDate) {
+        $this->insertDate = $insertDate;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdateDate() {
+        return $this->updateDate;
+    }
+
+    /**
+     * @param \DateTime $updateDate
+     *
+     * @return ProgramCategory
+     */
+    public function setUpdateDate($updateDate) {
+        $this->updateDate = $updateDate;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName() {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return ProgramCategory
+     */
+    public function setName($name) {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getParentCategoryId() {
+        return $this->parentCategoryId;
+    }
+
+    /**
+     * @param int $parentCategoryId
+     *
+     * @return ProgramCategory
+     */
+    public function setParentCategoryId($parentCategoryId) {
+        $this->parentCategoryId = $parentCategoryId;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPrograms() {
+        return $this->programs;
+    }
+
+    /**
+     * @param int $programs
+     *
+     * @return ProgramCategory
+     */
+    public function setPrograms($programs) {
+        $this->programs = $programs;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getSubCategories() {
+        return $this->subCategories;
+    }
 
 }

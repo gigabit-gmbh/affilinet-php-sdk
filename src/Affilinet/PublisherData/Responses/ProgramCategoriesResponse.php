@@ -14,7 +14,7 @@ use Affilinet\Responses\AbstractSoapResponse;
  */
 class ProgramCategoriesResponse extends AbstractSoapResponse {
 
-    /** @var array<Program> $programs */
+    /** @var array<ProgramCategory> $programs */
     protected $programCategories;
 
     /**
@@ -44,7 +44,7 @@ class ProgramCategoriesResponse extends AbstractSoapResponse {
     }
 
     /**
-     * @return array<Program>|null
+     * @return array<ProgramCategory>|null
      */
     public function getProgramCategories() {
         return $this->programCategories;

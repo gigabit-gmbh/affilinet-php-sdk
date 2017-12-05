@@ -90,9 +90,7 @@ class CreativeRequest extends AbstractSoapRequest {
                 'DisplaySettings' => $this->displaySettings,
             ));
         } catch (\SoapFault $x) {
-            var_dump($x->detail);
-            die("ERROR");
-            // SoapFault
+            // todo
         }
 
 
