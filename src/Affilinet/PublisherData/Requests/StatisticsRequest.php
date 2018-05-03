@@ -11,7 +11,8 @@ use Affilinet\Requests\AbstractSoapRequest;
  *
  * @author Thomas Helmrich <thomas@gigabit.de>
  */
-class StatisticsRequest extends AbstractSoapRequest {
+class StatisticsRequest extends AbstractSoapRequest
+{
 
     /**
      * @var $affilinetClient AffilinetPublisherClient
@@ -22,7 +23,8 @@ class StatisticsRequest extends AbstractSoapRequest {
      * CategoriesRequest constructor.
      * @param AffilinetPublisherClient $affilinetClient
      */
-    public function __construct(AffilinetPublisherClient $affilinetClient) {
+    public function __construct(AffilinetPublisherClient $affilinetClient)
+    {
         parent::init($affilinetClient);
         $this->setToken($this->affilinetClient->getAffilinetToken($this->getToken()));
     }
@@ -30,7 +32,8 @@ class StatisticsRequest extends AbstractSoapRequest {
     /**
      * @return string
      */
-    public function getEndpoint() {
+    public function getEndpoint()
+    {
         return 'https://api.affili.net/V2.0/PublisherStatistics.svc?wsdl';
     }
 
@@ -40,7 +43,8 @@ class StatisticsRequest extends AbstractSoapRequest {
      *
      * @return SubIdStatisticResponse
      */
-    public function getSubIdStatistics($subId = "", $maxRecords = '1000') {
+    public function getSubIdStatistics($subId = "", $maxRecords = '1000')
+    {
 
         $startDate = strtotime("-2 weeks");
         $endDate = strtotime("today");
@@ -56,9 +60,12 @@ class StatisticsRequest extends AbstractSoapRequest {
             'ValuationType' => 'DateOfRegistration',
         );
 
-        $programs = $this->send("GetPrograms", array(
-            'GetSubIdStatisticsRequestMessage' => $params,
-        ));
+        $programs = $this->send(
+            "GetPrograms",
+            array(
+                'GetSubIdStatisticsRequestMessage' => $params,
+            )
+        );
 
         return new SubIdStatisticResponse($programs);
     }
