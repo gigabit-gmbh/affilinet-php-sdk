@@ -60,14 +60,14 @@ class StatisticsRequest extends AbstractSoapRequest
             'ValuationType' => 'DateOfRegistration',
         );
 
-        $programs = $this->send(
-            "GetPrograms",
+        $stats = $this->send(
+            "GetSubIdStatistics",
             array(
                 'GetSubIdStatisticsRequestMessage' => $params,
             )
         );
 
-        return new SubIdStatisticResponse($programs);
+        return new SubIdStatisticResponse($stats);
     }
 
 
