@@ -35,9 +35,12 @@ class StatisticsRequest extends AbstractSoapRequest {
     }
 
     /**
+     * @param string $subId The subId to request - default empty (all)
+     * @param string $maxRecords Maximum Records to request, default is 1000
+     *
      * @return SubIdStatisticResponse
      */
-    public function getSubIdStatistics() {
+    public function getSubIdStatistics($subId = "", $maxRecords = '1000') {
 
         $startDate = strtotime("-2 weeks");
         $endDate = strtotime("today");
@@ -47,8 +50,8 @@ class StatisticsRequest extends AbstractSoapRequest {
             'EndDate' => $endDate,
             'ProgramIds' => $programIds,
             'ProgramTypes' => 'All',
-            'SubId' => '',
-            'MaximumRecords' => '100',
+            'SubId' => $subId,
+            'MaximumRecords' => $maxRecords,
             'TransactionStatus' => 'All',
             'ValuationType' => 'DateOfRegistration',
         );
